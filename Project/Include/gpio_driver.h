@@ -1,3 +1,13 @@
+/** @file gpio_driver.h
+ *  @brief Function prototypes for the GPIO driver.
+ *
+ *  This contains the function prototypes for the GPIO driver
+ *	and also macros, constants, variables needed.
+ *
+ *  @author Tran Nhat Duat (duattn)
+ *	@version 	V1.0
+ */
+ 
 #ifndef _GPIO_DRIVER_H
 #define _GPIO_DRIVER_H
 
@@ -14,6 +24,8 @@
 #define GPIO_ORANGE_LED 13
 #define GPIO_RED_LED 14
 #define GPIO_BLUE_LED 15
+
+#define GPIOx_PUPDR_ReservedValue 0x03
 
 /************************************************
  *  3. Typedef
@@ -49,6 +61,7 @@ typedef enum {
 	GPIOx_PUPDR_NoPull = 0x00,
 	GPIOx_PUPDR_PullUp = 0x01,
 	GPIOx_PUPDR_PullDown = 0x02
+	// reserved value = 0x03
 } GPIOx_PUPDR_Typedef;
 
 /************************************************
@@ -59,9 +72,25 @@ typedef enum {
 /************************************************
  *  5. Function Declaration
  ***********************************************/
+ 
+ /** @brief abc
+ *
+ *  @param gpioX The string to be printed.
+ *  @return void.
+ */
 void GPIO_Enable(GPIO_TypeDef* gpioX);
 
+ /** @brief abc
+ *
+ *  @param gpioX The string to be printed.
+ *  @return void.
+ */
 void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig initConfig);
 
+ /** @brief abc
+ *
+ *  @param gpioX The string to be printed.
+ *  @return void.
+ */
 void GPIO_SetPin(GPIO_TypeDef* gpioX, uint8_t pin);
 #endif

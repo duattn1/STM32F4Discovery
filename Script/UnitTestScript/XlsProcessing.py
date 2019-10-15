@@ -1,7 +1,11 @@
+################################################################################
+# 1. Including files
+################################################################################
 import xlrd
 
-######################33
-
+################################################################################
+# 2. Class definition
+################################################################################
 class testSuiteCollection:
     test_suite_name = ""
     testcases = []
@@ -45,6 +49,9 @@ class paramCollection:
         self.init_value = str(init_value)
         self.isStructType = str(isStructType)
 
+################################################################################
+# 3. Function definition
+################################################################################
 def find_output_position():
     output_position = 1 # assume that there is no INPUT data, and OUTPUT data begins at column 1
     for i in range(sheet.ncols):
@@ -54,24 +61,34 @@ def find_output_position():
 
 def isStructure(type):
     result = "False"
+
+    # check if "type" exists in "basicTypes"
     try:
         basicTypes.index(type)
     except ValueError:
         result = "True"
+    
+    # check if "type" is a pointer
+    if result == "True":        
+        try:
+            type.index("*")
+        except ValueError:
+            result = "True"
+        else:
+            result = "False"
+            
     return result
     
-#################################
+################################################################################
+# 4. Main processing: XLS file parsing
+################################################################################
 loc = ("C:\\Users\\PC\\Documents\\GitHub\\STM32F4Discovery\\UT_TestSuite.xls") 
-# To open Workbook 
+# Open Workbook 
 wb = xlrd.open_workbook(loc) 
-sheet = wb.sheet_by_index(1)
+sheet = wb.sheet_by_index(2)
 
-#########################################
-#for i in range(sheet.ncols): 
-#    print(sheet.cell_value(5, i))
-#print(sheet.row_values(3))
-#########################################
-basicTypes = ["uint8_t", "uint16_t", "uint32_t", "uint64_t"]
+basicTypes = ["int8_t", "int16_t", "int32_t", "int64_t", \
+"uint8_t", "uint16_t", "uint32_t", "uint64_t"]
 ###############################
 output_position = find_output_position()
 noRows = sheet.nrows
@@ -93,11 +110,13 @@ for i in range(5, noRows):
     # Collect all parameters
     index = 0
     for j in range(1, output_position, 2): 
+        gen_name = "param_" + str(index + 1)
         type = sheet.cell_value(4, j) # unchanged
         param_name = sheet.cell_value(3, j) # unchanged
         init_value = sheet.cell_value(i, j)        
         isStructType = isStructure(type)
-        testcase.params[index] = paramCollection("param_1", type, param_name, init_value, isStructType)
+        testcase.params[index] = \
+        paramCollection(gen_name, type, param_name, init_value, isStructType)
         
         index += 1
         
@@ -105,11 +124,13 @@ for i in range(5, noRows):
     # Collect all global variables
     index = 0
     for j in range(output_position, noCols - 1, 2): 
+        gen_name = "global_var_" + str(index + 1)
         type = sheet.cell_value(4, j) # unchanged
         expected = sheet.cell_value(i, j)
         actual_mem = sheet.cell_value(3, j) # unchanged
         mask = sheet.cell_value(i, j + 1)
-        testcase.global_vars[index] = globalVarCollection("global_var_1", type, expected, actual_mem, mask)
+        testcase.global_vars[index] = \
+        globalVarCollection(gen_name, type, expected, actual_mem, mask)
         
         index += 1
     

@@ -27,9 +27,21 @@
 /************************************************
  *  5. Function Declaration
 ***********************************************/
-void Test_GPIO_Enable_TC1(void);
-void Test_GPIO_Enable_TC2(void);
-
 void Test_GPIO_Init_TC1(void);
+void Test_GPIO_Init_TC2(void);
+void Test_GPIO_Init_TC3(void);
+void Test_GPIO_Init_TC4(void);
+void Test_GPIO_Init_TC5(void);
+void Test_GPIO_Init_TC6(void);
+void Test_GPIO_Init_TC7(void);
+void Test_GPIO_Init_TC8(void);
+void Test_GPIO_Init_TC9(void);
+void Test_GPIO_Init_TC10(void);
+void Test_GPIO_Init_TC11(void);
+void Test_GPIO_Init_TC12(void);
+void Test_GPIO_Init_TC13(void);
+void Test_GPIO_Init_TC14(void);
+void Test_GPIO_Init_TC15(void);
+void Test_GPIO_Init_TC16(void);
 
 #endif

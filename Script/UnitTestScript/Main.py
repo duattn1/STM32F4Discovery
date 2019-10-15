@@ -1,11 +1,15 @@
 ################################################################################
-# Including files
+# 1. Including files
 ################################################################################
 from CodeGenUtils import *
 from XlsProcessing import *
 
 ################################################################################
-# Function definition
+# 2. Class definition
+################################################################################
+
+################################################################################
+# 3. Function definition
 ################################################################################
 def init_global_var(testcase):
     for var in testcase.global_vars:
@@ -16,10 +20,17 @@ def init_global_var(testcase):
 def init_param(testcase):
     for param in testcase.params:
         gen_comment_line("Init " + param.gen_name)
-        gen_var_definition(param.type, param.param_name, param.init_value)
+        if param.isStructType == "False":
+            gen_var_definition(param.type, param.param_name, param.init_value)
+        else:
+            gen_var_declaration(param.type, param.param_name)
+            # Split the structure init contents into lines and store in an array
+            struct_member_init = param.init_value.split("\n") 
+            for statement in struct_member_init:
+                cpp(param.param_name + "." + statement + ";")
     gen_break_line()
 
-def call_test_method(testcase):    
+def call_test_method(testcase):
     # Create an array with null items ("None" is similar to null")
     param_list = [None] * len(testcase.params)
     
@@ -76,7 +87,8 @@ def gen_section_1_include_file():
 def gen_section_2_variable():
     gen_comment_block("2. Global, Static and Extern Variables")
     noTestcase = len(testSuite.testcases)
-    with cpp.block("void (*testcaseList[" + str(noTestcase) + "])(void) = ", ";"):
+    with cpp.block("void (*testcaseList[" + str(noTestcase) + \
+    "])(void) = ", ";"):
         counter = 1
         for testcase in testSuite.testcases:
             if counter < noTestcase:
@@ -100,7 +112,7 @@ def gen_section_3_function_definition():
     
     
 ################################################################################
-# Main processing: File generating
+# 4. Main processing: File generating
 ################################################################################
 gen_section_1_include_file()
 gen_section_2_variable()
