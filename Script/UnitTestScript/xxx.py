@@ -1,13 +1,23 @@
 import xlrd
 
-######################33
+#################################
+loc = ("C:\\Users\\PC\\Documents\\GitHub\\STM32F4Discovery\\UT_TestSuite.xls") 
+# To open Workbook 
+wb = xlrd.open_workbook(loc) 
+sheet = wb.sheet_by_index(2)
+
+#########################################
+#for i in range(sheet.ncols): 
+#    print(sheet.cell_value(5, i))
+#print(sheet.row_values(3))
+#########################################
 
 class testSuiteCollection:
     test_suite_name = ""
     testcases = []
     
     def __init__(self, test_suite_name):
-        self.test_suite_name = str(test_suite_name)
+        self.test_suite_name = test_suite_name
 
 class testcaseCollection:
     function_name = ""
@@ -16,8 +26,8 @@ class testcaseCollection:
     global_vars = []
     
     def __init__(self, function_name, testcase_name):
-        self.function_name = str(function_name)
-        self.testcase_name = str(testcase_name)
+        self.function_name = function_name
+        self.testcase_name = testcase_name
 
 class globalVarCollection:
     gen_name = ""
@@ -26,11 +36,11 @@ class globalVarCollection:
     actual_mem = ""
     mask = ""
     def __init__(self, gen_name, type, expected, actual_mem, mask):
-        self.gen_name = str(gen_name)
-        self.type = str(type)
-        self.expected = str(expected)
-        self.actual_mem = str(actual_mem)
-        self.mask = str(mask)
+        self.gen_name = gen_name
+        self.type = type
+        self.expected = expected
+        self.actual_mem = actual_mem
+        self.mask = mask
         
 class paramCollection:
     gen_name = ""
@@ -39,11 +49,11 @@ class paramCollection:
     init_value = ""
     isStructType = "False"
     def __init__(self, gen_name, type, param_name, init_value, isStructType):
-        self.gen_name = str(gen_name)
-        self.type = str(type)
-        self.param_name = str(param_name)
-        self.init_value = str(init_value)
-        self.isStructType = str(isStructType)
+        self.gen_name = gen_name
+        self.type = type
+        self.param_name = param_name
+        self.init_value = init_value
+        self.isStructType = isStructType
 
 def find_output_position():
     output_position = 1 # assume that there is no INPUT data, and OUTPUT data begins at column 1
@@ -59,18 +69,7 @@ def isStructure(type):
     except ValueError:
         result = "True"
     return result
-    
-#################################
-loc = ("C:\\Users\\PC\\Documents\\GitHub\\STM32F4Discovery\\UT_TestSuite.xls") 
-# To open Workbook 
-wb = xlrd.open_workbook(loc) 
-sheet = wb.sheet_by_index(1)
-
-#########################################
-#for i in range(sheet.ncols): 
-#    print(sheet.cell_value(5, i))
-#print(sheet.row_values(3))
-#########################################
+###############
 basicTypes = ["uint8_t", "uint16_t", "uint32_t", "uint64_t"]
 ###############################
 output_position = find_output_position()
@@ -109,8 +108,16 @@ for i in range(5, noRows):
         expected = sheet.cell_value(i, j)
         actual_mem = sheet.cell_value(3, j) # unchanged
         mask = sheet.cell_value(i, j + 1)
-        testcase.global_vars[index] = globalVarCollection("global_var_1", type, expected, actual_mem, mask)
+        testcase.global_vars[index] = globalVarCollection("param_1", type, expected, actual_mem, mask)
         
         index += 1
     
     testSuite.testcases.append(testcase)
+    
+
+# test methods
+for i in range(0, sheet.nrows - 5):    
+    print(testSuite.testcases[i].testcase_name)
+    print(testSuite.testcases[i].params[0].isStructType)
+    print(len(testSuite.testcases[i].params))
+    print("")
