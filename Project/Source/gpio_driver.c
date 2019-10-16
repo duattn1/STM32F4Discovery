@@ -35,30 +35,45 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void GPIO_Enable(GPIO_TypeDef* gpioX) {
-	if (GPIOA == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
-	if (GPIOB == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
-	if (GPIOC == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
-	if (GPIOD == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
-	if (GPIOE == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOEEN;
-	if (GPIOF == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOFEN;
-	if (GPIOG == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOGEN;
-	if (GPIOH == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOHEN;
-	if (GPIOI == gpioX)
-		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOIEN;
+void GPIO_Enable(GPIO_Port_Typedef port) {
+	RCC_AHB1ENR_Typedef peripheral;	
+	
+	switch(port){
+		case GPIO_PortGPIOA:
+			peripheral = RCC_AHB1ENR_GPIOAEnable;
+			break;
+		case GPIO_PortGPIOB:
+			peripheral = RCC_AHB1ENR_GPIOBEnable;
+			break;
+		case GPIO_PortGPIOC:
+			peripheral = RCC_AHB1ENR_GPIOCEnable;
+			break;
+		case GPIO_PortGPIOD:
+			peripheral = RCC_AHB1ENR_GPIODEnable;
+			break;
+		case GPIO_PortGPIOE:
+			peripheral = RCC_AHB1ENR_GPIOEEnable;
+			break;
+		case GPIO_PortGPIOF:
+			peripheral = RCC_AHB1ENR_GPIOFEnable;
+			break;
+		case GPIO_PortGPIOG:
+			peripheral = RCC_AHB1ENR_GPIOGEnable;
+			break;
+		case GPIO_PortGPIOH:
+			peripheral = RCC_AHB1ENR_GPIOHEnable;
+			break;
+		case GPIO_PortGPIOI:
+			peripheral = RCC_AHB1ENR_GPIOIEnable;
+			break;
+	};
+	
+	RCC_ClockEnableConfig config;
+	config.AHB1Config = peripheral;
+	RCC_EnableClock(config);
 }
  
 void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig config) {
-	GPIO_Enable(gpioX); 
-	
 	// Select GPIO pin mode
 	gpioX->MODER &= ~(0x03 << config.pin*2);
 	gpioX->MODER |= config.mode << (config.pin*2);
@@ -80,8 +95,13 @@ void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig config) {
 }
 
 void GPIO_SetPin(GPIO_TypeDef* gpioX, uint8_t pin){
-	// BSn pins are located in 16 LSB bits of BSRR
+	// BRn pins are located in 16 LSB bits of BSRR
 	gpioX->BSRR |= 0x01 << pin;
+}
+
+void GPIO_ResetPin(GPIO_TypeDef* gpioX, uint8_t pin){
+	// BSn pins are located in 16 MSB bits of BSRR
+	gpioX->BSRR |= 0x01 << (pin + 16);
 }
 
 /** End of File ***************************************************************/

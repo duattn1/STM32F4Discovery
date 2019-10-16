@@ -31,11 +31,25 @@
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-
+volatile uint32_t ticks;  /**< System Tick counter */
 
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
+void infiniteLoop(void) {
+	 while(1) {
+		 
+#ifdef GPIO_SAMPLE		 
+		 /**< Toggle RED LED */
+		 GPIO_SetPin(GPIOD, GPIO_RED_LED);
+		 delay(1000);
+		 GPIO_ResetPin(GPIOD, GPIO_RED_LED);
+		 delay(1000);
+#endif		
+		 
+	 }
+}
+ 
 void demo(void) {
 #ifdef GPIO_SAMPLE
 	// Create the gpio config for pin 13
@@ -47,14 +61,18 @@ void demo(void) {
 	config.pupd = GPIOx_PUPDR_PullUp;
 	
 	// Enable and initialize the GPIOD pin 13
-	GPIO_Enable(GPIOD);
+	GPIO_Enable(GPIO_PortGPIOD);
 	GPIO_Init(GPIOD, config);
 	
-	// Turn on the GPIOD pin 13 
-	GPIO_SetPin(GPIOD, GPIO_RED_LED);
-	//GPIOD->MODER |= 0x01 << 2*GPIO_RED_LED;
-	//GPIOD->ODR |= 0x01 << GPIO_RED_LED; 
+	
+	/* Configure SysTick interrupt every 1ms */
+	SysTick_Config(SystemCoreClock/1000);
 #endif
 }
 
+void delay(volatile uint32_t time)
+{
+  ticks = time;
+  while(ticks !=0);
+} 
 /** End of File ***************************************************************/

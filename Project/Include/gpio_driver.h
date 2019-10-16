@@ -15,6 +15,7 @@
  ******************************************************************************/
 #include <stdint.h>
 #include "stm32f407xx.h"
+#include "rcc_driver.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -40,7 +41,22 @@
  ******************************************************************************/
 
 /**
- * @enum This enumeration is a list of all port pins.
+ * @enum This enumeration is a list of all GPIO ports.
+ */
+typedef enum {
+	GPIO_PortGPIOA,
+	GPIO_PortGPIOB,
+	GPIO_PortGPIOC,
+	GPIO_PortGPIOD,
+	GPIO_PortGPIOE,
+	GPIO_PortGPIOF,
+	GPIO_PortGPIOG,
+	GPIO_PortGPIOH,
+	GPIO_PortGPIOI
+ } GPIO_Port_Typedef;
+
+/**
+ * @enum This enumeration is a list of all GPIO port pins.
  */
 typedef enum {
 	GPIO_Pin0 = 0x00,
@@ -59,7 +75,7 @@ typedef enum {
 	GPIO_Pin13 = 0x0D,
 	GPIO_Pin14 = 0x0E,
 	GPIO_Pin15 = 0x0F
- } Pin_Typedef;
+ } GPIO_Pin_Typedef;
  
 /**
  * @enum This enumeration is a list of configured values for pin mode.
@@ -100,10 +116,10 @@ typedef enum {
 } GPIOx_PUPDR_Typedef;
 
 /**
- * @struct This structure is a initialization configuration for a port pin.
+ * @struct This structure contains initialization configuration for a port pin.
  */
 typedef struct {
-	Pin_Typedef pin;											/**< Pin number */
+	GPIO_Pin_Typedef pin;											/**< Pin number */
 	GPIOx_MODER_Typedef mode;							/**< Pin mode */
 	GPIOx_OTYPER_Typedef ouputType;				/**< Pin output type */
 	GPIOx_OSPEEDR_Typedef outputSpeed;		/**< Pin output speed */
@@ -127,9 +143,9 @@ extern "C"{
  *  @param gpioX The GPIO port.
  *  @return nothing.
  */
-void GPIO_Enable(GPIO_TypeDef* gpioX);
+void GPIO_Enable(GPIO_Port_Typedef port);
 
- /** @brief Initialize a GPIO port pin.
+/** @brief Initialize a GPIO port pin.
  *
  *  @param gpioX The GPIO port.
  *	@param initConfig The configuration for the GPIO port.
@@ -137,7 +153,7 @@ void GPIO_Enable(GPIO_TypeDef* gpioX);
  */
 void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig initConfig);
 
- /** @brief Set a pin to HIGH with atomic operation.
+/** @brief Set a pin to HIGH with atomic operation.
  *
  *  @param gpioX The GPIO port.
  *	@param pin The pin that need to be set to HIGH.
@@ -145,6 +161,13 @@ void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig initConfig);
  */
 void GPIO_SetPin(GPIO_TypeDef* gpioX, uint8_t pin);
 
+ /** @brief Reset a pin to LOW with atomic operation.
+ *
+ *  @param gpioX The GPIO port.
+ *	@param pin The pin that need to be reset to LOW.
+ *  @return nthing.
+ */
+void GPIO_ResetPin(GPIO_TypeDef* gpioX, uint8_t pin);
 
 #ifdef __cplusplus
 } // extern "C"

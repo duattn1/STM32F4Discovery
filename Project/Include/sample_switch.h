@@ -14,6 +14,7 @@
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
+#include "interrupt.h"
 #include "gpio_driver.h"
 
 /*******************************************************************************
@@ -44,6 +45,13 @@
 extern "C"{
 #endif
 
+/** @brief Perform the infinite loop in main() function
+ *
+ *  @param void.
+ *  @return nothing.
+ */
+void infiniteLoop(void);
+
 /** @brief Run the peripherals sample applications according to the defined macros
  *
  *  @param void.
@@ -51,6 +59,13 @@ extern "C"{
  */
 void demo(void);
 
+/** @brief Make the MCU delay for a period of time.
+ *
+ *  @param time Delay time based on number of ticks
+ *  @return nothing.
+ */
+void delay(volatile uint32_t time);
+	
 #ifdef __cplusplus
 } // extern "C"
 #endif

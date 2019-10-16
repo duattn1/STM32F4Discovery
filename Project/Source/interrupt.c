@@ -1,28 +1,20 @@
-/** @file TODO: MODULE.h
- *  @brief This module TODO: WHAT DO I DO?
- * 
- *  This is the header file for the definition TODO: MORE ABOUT ME!
- *  
- * 	@author Tran Nhat Duat (duattn)
+/** @file interrupt.c
+ *  @brief Function implementation for all interrupt handlers.
+ *
+ *  This is the source file for the definition of all interrupt handlers.
+ *
+ *  @author 	Tran Nhat Duat (duattn)
  *	@version 	V1.0
- */
-
-#ifndef MODULE_H_
-#define MODULE_H_
-
+ */ 
+ 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-
+#include "interrupt.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
-/**
- * This constant is an example
- */
-#define Example 			32
-
 
 
 /*******************************************************************************
@@ -30,26 +22,10 @@
  ******************************************************************************/
 
 
-	
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Othersefs
+ * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
-/**
- * @enum This enumeration is a list of TODO
- */
-typedef enum
-{
-	TEST_TEST1,			/**< Test Type 1 */
-	TEST_TEST2,			/**< Test Type 2 */
-}Test_t;
 
-/**
- * @struct This structure is TODO
- */
-typedef struct
-{
-	int pin;			/**< Port pin */
-} Config;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
@@ -57,25 +33,13 @@ typedef struct
 
 
 /*******************************************************************************
- * 6. Function Prototypes
+ * 6. Function Definitions
  ******************************************************************************/
-#ifdef __cplusplus
-extern "C"{
-#endif
-
-/** @brief TODO
- *
- *  @param name TODO
- *  @return void.
- */
-void Function(uint32_t name);
-
-
-#ifdef __cplusplus
-} // extern "C"
-#endif
-
-//TODO: UPDATE COMMENT BELOW
-#endif /*File_H_*/
+void SysTick_Handler(void){
+	if(ticks !=0)
+	{
+		ticks --;
+	}	
+}
 
 /** End of File ***************************************************************/

@@ -62,7 +62,7 @@ extern "C"{
  *  @return Value it has written.
  */
 int fputc(int ch, FILE *f) {
-    ITM_SendChar((ch);
+    ITM_SendChar(ch);
     return(ch);
 }
 #endif
@@ -72,6 +72,6 @@ int fputc(int ch, FILE *f) {
 } // extern "C"
 #endif
 
-#endif /* _GPIO_DRIVER_H */
+#endif /* _MAIN_H */
 
 /** End of File ***************************************************************/

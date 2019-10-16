@@ -1,81 +1,59 @@
-/** @file TODO: MODULE.h
- *  @brief This module TODO: WHAT DO I DO?
+/** @file interrupt.h
+ *  @brief Function prototypes for all interrupt handlers.
  * 
- *  This is the header file for the definition TODO: MORE ABOUT ME!
+ *  This is the header file for the definition of all interrupt handlers.
  *  
  * 	@author Tran Nhat Duat (duattn)
  *	@version 	V1.0
  */
-
-#ifndef MODULE_H_
-#define MODULE_H_
+ 
+#ifndef _INTERRUPT_H
+#define _INTERRUPT_H
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-
+#include <stdint.h>
+#include "stm32f407xx.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
-/**
- * This constant is an example
- */
-#define Example 			32
-
-
+ 
 
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
+ 
 
-
-	
 /*******************************************************************************
- * 4. Typedefs: Enumerations, Structures, Pointers, Othersefs
+ * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
-/**
- * @enum This enumeration is a list of TODO
- */
-typedef enum
-{
-	TEST_TEST1,			/**< Test Type 1 */
-	TEST_TEST2,			/**< Test Type 2 */
-}Test_t;
 
-/**
- * @struct This structure is TODO
- */
-typedef struct
-{
-	int pin;			/**< Port pin */
-} Config;
-
+ 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
-
+extern volatile uint32_t ticks;
 
 /*******************************************************************************
  * 6. Function Prototypes
- ******************************************************************************/
+ ******************************************************************************/ 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-/** @brief TODO
+/** @brief STM32F4 Discovery System Tick interrupt handler
  *
- *  @param name TODO
- *  @return void.
+ *  @param void
+ *  @return nothing.
  */
-void Function(uint32_t name);
-
+void SysTick_Handler(void);
 
 #ifdef __cplusplus
 } // extern "C"
 #endif
 
-//TODO: UPDATE COMMENT BELOW
-#endif /*File_H_*/
+#endif /* _INTERRUPT_H */
 
 /** End of File ***************************************************************/

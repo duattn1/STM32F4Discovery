@@ -407,6 +407,11 @@
               <FileType>5</FileType>
               <FilePath>.\Include\main.h</FilePath>
             </File>
+            <File>
+              <FileName>interrupt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Include\interrupt.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -436,6 +441,11 @@
               <FileName>source_template.txt</FileName>
               <FileType>5</FileType>
               <FilePath>.\Source\source_template.txt</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\interrupt.c</FilePath>
             </File>
           </Files>
         </Group>
