@@ -402,6 +402,11 @@
               <FileType>5</FileType>
               <FilePath>.\Include\sample_switch.h</FilePath>
             </File>
+            <File>
+              <FileName>main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Include\main.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

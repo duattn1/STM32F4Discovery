@@ -1,20 +1,23 @@
-/** @file rcc_driver.h
- *  @brief Function prototypes for RCC driver.
+/** @file main.h
+ *  @brief Function prototypes for main() function processing.
  * 
- *  This is the header file for the definition of RCC driver.
+ *  This is the header file for main processing.
  *  
  * 	@author Tran Nhat Duat (duattn)
  *	@version 	V1.0
  */
  
-#ifndef _RCC_DRIVER_H
-#define _RCC_DRIVER_H
+#ifndef _MAIN_H
+#define _MAIN_H
 
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include <stdint.h>
-#include "stm32f407xx.h"
+#include "sample_switch.h"
+
+#ifdef UNIT_TEST_RUNNING
+#include "ut_main.h"
+#endif
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -29,16 +32,15 @@
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
-
-/**
- * @enum This enumeration is a list of all port pins.
- */
-typedef enum {	
-	GPIO_Pin12 = 0x0C,
-	GPIO_Pin13 = 0x0D,
-	GPIO_Pin14 = 0x0E,
-	GPIO_Pin15 = 0x0F
- } Pin_Typedef;
+#ifdef UNIT_TEST_RUNNING
+struct __FILE
+{
+  int handle;
+  /* Whatever you require here. If the only file you are using is */
+  /* standard output using printf() for debugging, no file handling */
+  /* is required. */
+};
+#endif
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
@@ -51,13 +53,19 @@ typedef enum {
 #ifdef __cplusplus
 extern "C"{
 #endif
-	
-/** @brief Enable clock for a GPIO port.
+
+#ifdef UNIT_TEST_RUNNING
+/** @brief Send all printf() output to the SWV console.
  *
- *  @param gpioX The GPIO port.
- *  @return void.
+ *  @param ch Character to be sent.
+ *	@param f File pointer.
+ *  @return Value it has written.
  */
-void GPIO_Enable(GPIO_TypeDef* gpioX);
+int fputc(int ch, FILE *f) {
+    ITM_SendChar((ch);
+    return(ch);
+}
+#endif
 
 
 #ifdef __cplusplus

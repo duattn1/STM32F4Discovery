@@ -1,24 +1,43 @@
-#include "sample_switch.h"
+/** @file main.c
+ *  @brief Function implementation for main() function processing.
+ *
+ *  This is the source file for main processing.
+ *
+ *  @author 	Tran Nhat Duat (duattn)
+ *	@version 	V1.0
+ */ 
+ 
+/*******************************************************************************
+ * 1. Included Files
+ ******************************************************************************/
+#include "main.h"
 
-#ifdef UNIT_TEST_RUNNING
-#include "ut_main.h"
+/*******************************************************************************
+ * 2. Object-like Macros
+ ******************************************************************************/
 
-struct __FILE
-{
-  int handle;
-  /* Whatever you require here. If the only file you are using is */
-  /* standard output using printf() for debugging, no file handling */
-  /* is required. */
-};
 
-/*send text over SWV*/
-int fputc(int ch, FILE *f) {
-    ITM_SendChar(ch);//send method for SWV
-    return(ch);
-}
-#endif
+/*******************************************************************************
+ * 3. Function-like Macros
+ ******************************************************************************/
 
+
+/*******************************************************************************
+ * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * 5. Global, Static and Extern Variables
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * 6. Function Definitions
+ ******************************************************************************/
 int main(void) {
 	//demo();
 	return runTest();
 }
+
+/** End of File ***************************************************************/

@@ -1,26 +1,40 @@
 /** @file gpio_driver.c
- *  @brief Function implementation for the GPIO driver.
+ *  @brief Function implementation for GPIO driver.
  *
- *  This contains the function implementation for the GPIO driver.
+ *  This is the source file for the definition of GPIO driver.
  *
  *  @author 	Tran Nhat Duat (duattn)
  *	@version 	V1.0
  */ 
  
- /************************************************
- *  1. Included Files
- ***********************************************/
+/*******************************************************************************
+ * 1. Included Files
+ ******************************************************************************/
 #include "gpio_driver.h"
 
+/*******************************************************************************
+ * 2. Object-like Macros
+ ******************************************************************************/
 
-/************************************************
- *  2. Global, Static and Extern Variables
- ***********************************************/
+
+/*******************************************************************************
+ * 3. Function-like Macros
+ ******************************************************************************/
 
 
-/************************************************
- *  3. Function Defintition
- ***********************************************/
+/*******************************************************************************
+ * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * 5. Global, Static and Extern Variables
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * 6. Function Definitions
+ ******************************************************************************/
 void GPIO_Enable(GPIO_TypeDef* gpioX) {
 	if (GPIOA == gpioX)
 		RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
@@ -43,7 +57,7 @@ void GPIO_Enable(GPIO_TypeDef* gpioX) {
 }
  
 void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig config) {
-	GPIO_Enable(gpioX);
+	GPIO_Enable(gpioX); 
 	
 	// Select GPIO pin mode
 	gpioX->MODER &= ~(0x03 << config.pin*2);
@@ -69,3 +83,5 @@ void GPIO_SetPin(GPIO_TypeDef* gpioX, uint8_t pin){
 	// BSn pins are located in 16 LSB bits of BSRR
 	gpioX->BSRR |= 0x01 << pin;
 }
+
+/** End of File ***************************************************************/
