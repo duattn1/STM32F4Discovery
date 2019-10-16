@@ -6,7 +6,7 @@
 /************************************************
  *  2. Global, Static and Extern Variables
  ***********************************************/
-extern void (*testcaseList[16])(void);
+extern void (*testcaseList[9])(void);
 
 /************************************************
  *  3. Function Defintition

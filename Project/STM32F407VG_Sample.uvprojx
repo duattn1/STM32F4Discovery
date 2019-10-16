@@ -412,6 +412,11 @@
               <FileType>5</FileType>
               <FilePath>.\Include\interrupt.h</FilePath>
             </File>
+            <File>
+              <FileName>usart_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Include\usart_driver.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -446,6 +451,11 @@
               <FileName>interrupt.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\interrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\usart_driver.c</FilePath>
             </File>
           </Files>
         </Group>

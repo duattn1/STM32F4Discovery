@@ -15,10 +15,10 @@ def gen_comment_line(comment):
     cpp(content)
 
 def gen_comment_block(section_name):
-    content = " *  " + section_name
-    cpp("/************************************************")
+    content = " * " + section_name
+    cpp("/*******************************************************************************")
     cpp(content)
-    cpp(" ***********************************************/")
+    cpp(" ******************************************************************************/")
 
 def gen_var_declaration(var_type, var_name):
     content = var_type + " " + var_name + ";" 

@@ -53,7 +53,7 @@ void infiniteLoop(void) {
 void demo(void) {
 #ifdef GPIO_SAMPLE
 	// Create the gpio config for pin 13
-	GPIO_InitConfig config;
+	Struct_GPIO_InitConfig config;
 	config.pin = GPIO_RED_LED;
 	config.mode = GPIOx_MODER_Output;
 	config.ouputType = GPIOx_OTYPER_PushPull;
@@ -63,9 +63,8 @@ void demo(void) {
 	// Enable and initialize the GPIOD pin 13
 	GPIO_Enable(GPIO_PortGPIOD);
 	GPIO_Init(GPIOD, config);
-	
-	
-	/* Configure SysTick interrupt every 1ms */
+		
+	/* Configure SysTick to interrupt every 1ms */
 	SysTick_Config(SystemCoreClock/1000);
 #endif
 }

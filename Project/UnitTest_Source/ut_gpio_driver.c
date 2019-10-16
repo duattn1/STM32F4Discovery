@@ -1,11 +1,34 @@
-/************************************************
- *  1. Included Files
- ***********************************************/
+/** @file ut_gpio_driver.c
+ *  @brief Function implementation for unit test of GPIO driver.
+ *
+ *  This file is generated from scripts. This is the source file for 
+ *  the unit test definition of GPIO driver.
+ *
+ *  @author 	Tran Nhat Duat (duattn)
+ *  @version 	V1.0
+ */
+
+/*******************************************************************************
+ * 1. Included Files
+ ******************************************************************************/
 #include "ut_gpio_driver.h"
 
-/************************************************
- *  2. Global, Static and Extern Variables
- ***********************************************/
+/*******************************************************************************
+ * 2. Object-like Macros
+ ******************************************************************************/
+
+/*******************************************************************************
+ * 3. Function-like Macros
+ ******************************************************************************/
+
+/*******************************************************************************
+ * 4. Typedefs: Enumerations, Structures, Pointers, Others
+ ******************************************************************************/
+
+/*******************************************************************************
+ * 5. Global, Static and Extern Variables
+ ******************************************************************************/
+// List of all test cases
 void (*testcaseList[16])(void) = 
 {
 	Test_GPIO_Init_TC1,
@@ -26,9 +49,9 @@ void (*testcaseList[16])(void) =
 	Test_GPIO_Init_TC16
 };
 
-/************************************************
- *  3. Function Defintition
- ***********************************************/
+/*******************************************************************************
+ * 6. Function Definitions
+ ******************************************************************************/
 void Test_GPIO_Init_TC1(void)
 {
 	// Declare object to check value of gpioX->MODER
@@ -43,8 +66,8 @@ void Test_GPIO_Init_TC1(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 0;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin0;
 	config.mode = GPIOx_MODER_Input;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_Low;
@@ -89,8 +112,8 @@ void Test_GPIO_Init_TC2(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 1;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin1;
 	config.mode = GPIOx_MODER_Output;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
@@ -135,8 +158,8 @@ void Test_GPIO_Init_TC3(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 2;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin2;
 	config.mode = GPIOx_MODER_AlternateFunction;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_High;
@@ -181,12 +204,12 @@ void Test_GPIO_Init_TC4(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 3;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin3;
 	config.mode = GPIOx_MODER_Analog;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_VeryHigh;
-	config.pupd = GPIOx_PUPDR_ReservedValue;
+	config.pupd = GPIOx_PUPDR_NoPull;
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -208,7 +231,7 @@ void Test_GPIO_Init_TC4(void)
 	compareBits(global_var_3);
 	// Compare global_var_4 with expected value
 	global_var_4.actual = gpioX->PUPDR;
-	global_var_4.expected = 0x000000C0;
+	global_var_4.expected = 0x00000000;
 	global_var_4.mask = 0x000000C0;
 	compareBits(global_var_4);
 }
@@ -227,8 +250,8 @@ void Test_GPIO_Init_TC5(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 4;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin4;
 	config.mode = GPIOx_MODER_Input;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_Low;
@@ -273,8 +296,8 @@ void Test_GPIO_Init_TC6(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 5;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin5;
 	config.mode = GPIOx_MODER_Output;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
@@ -319,8 +342,8 @@ void Test_GPIO_Init_TC7(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 6;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin6;
 	config.mode = GPIOx_MODER_AlternateFunction;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_High;
@@ -365,12 +388,12 @@ void Test_GPIO_Init_TC8(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 7;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin7;
 	config.mode = GPIOx_MODER_Analog;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_VeryHigh;
-	config.pupd = GPIOx_PUPDR_ReservedValue;
+	config.pupd = GPIOx_PUPDR_NoPull;
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -392,7 +415,7 @@ void Test_GPIO_Init_TC8(void)
 	compareBits(global_var_3);
 	// Compare global_var_4 with expected value
 	global_var_4.actual = gpioX->PUPDR;
-	global_var_4.expected = 0x0000C000;
+	global_var_4.expected = 0x00000000;
 	global_var_4.mask = 0x0000C000;
 	compareBits(global_var_4);
 }
@@ -411,8 +434,8 @@ void Test_GPIO_Init_TC9(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 8;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin8;
 	config.mode = GPIOx_MODER_Input;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_Low;
@@ -457,8 +480,8 @@ void Test_GPIO_Init_TC10(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 9;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin9;
 	config.mode = GPIOx_MODER_Output;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
@@ -503,8 +526,8 @@ void Test_GPIO_Init_TC11(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 10;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin10;
 	config.mode = GPIOx_MODER_AlternateFunction;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_High;
@@ -549,12 +572,12 @@ void Test_GPIO_Init_TC12(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 11;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin11;
 	config.mode = GPIOx_MODER_Analog;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_VeryHigh;
-	config.pupd = GPIOx_PUPDR_ReservedValue;
+	config.pupd = GPIOx_PUPDR_NoPull;
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -576,7 +599,7 @@ void Test_GPIO_Init_TC12(void)
 	compareBits(global_var_3);
 	// Compare global_var_4 with expected value
 	global_var_4.actual = gpioX->PUPDR;
-	global_var_4.expected = 0x00C00000;
+	global_var_4.expected = 0x00000000;
 	global_var_4.mask = 0x00C00000;
 	compareBits(global_var_4);
 }
@@ -595,8 +618,8 @@ void Test_GPIO_Init_TC13(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 12;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin12;
 	config.mode = GPIOx_MODER_Input;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_Low;
@@ -641,8 +664,8 @@ void Test_GPIO_Init_TC14(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 13;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin13;
 	config.mode = GPIOx_MODER_Output;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
@@ -687,8 +710,8 @@ void Test_GPIO_Init_TC15(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 14;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
 	config.mode = GPIOx_MODER_AlternateFunction;
 	config.ouputType = GPIOx_OTYPER_PushPull;
 	config.outputSpeed = GPIOx_OSPEEDR_High;
@@ -733,12 +756,12 @@ void Test_GPIO_Init_TC16(void)
 	// Init param_1
 	GPIO_TypeDef * gpioX = GPIOD;
 	// Init param_2
-	GPIO_InitConfig config;
-	config.pin = 15;
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin15;
 	config.mode = GPIOx_MODER_Analog;
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_VeryHigh;
-	config.pupd = GPIOx_PUPDR_ReservedValue;
+	config.pupd = GPIOx_PUPDR_NoPull;
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -760,7 +783,7 @@ void Test_GPIO_Init_TC16(void)
 	compareBits(global_var_3);
 	// Compare global_var_4 with expected value
 	global_var_4.actual = gpioX->PUPDR;
-	global_var_4.expected = 0xC0000000;
+	global_var_4.expected = 0x00000000;
 	global_var_4.mask = 0xC0000000;
 	compareBits(global_var_4);
 }

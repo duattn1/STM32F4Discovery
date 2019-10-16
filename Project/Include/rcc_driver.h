@@ -45,15 +45,15 @@ typedef enum {
 	RCC_AHB1ENR_GPIOHEnable = 0x00000080,
 	RCC_AHB1ENR_GPIOIEnable = 0x00000100,
 	// TODO: so on
- } RCC_AHB1ENR_Typedef;
+ } Enum_RCC_AHB1ENR_Typedef;
 
  /**
  * @struct This structure contains configuration to enable peripheral clock.
  */
 typedef struct {
-	RCC_AHB1ENR_Typedef AHB1Config;
+	Enum_RCC_AHB1ENR_Typedef AHB1Config;
 	// Other buses
-} RCC_ClockEnableConfig;
+} Struct_RCC_ClockEnableConfig;
  
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
@@ -72,7 +72,7 @@ extern "C"{
  *  @param TODO
  *  @return TODO
  */
-void RCC_EnableClock(RCC_ClockEnableConfig config);
+void RCC_EnableClock(Struct_RCC_ClockEnableConfig config);
 
 
 #ifdef __cplusplus

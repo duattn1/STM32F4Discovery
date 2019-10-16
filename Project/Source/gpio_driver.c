@@ -35,8 +35,8 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void GPIO_Enable(GPIO_Port_Typedef port) {
-	RCC_AHB1ENR_Typedef peripheral;	
+void GPIO_Enable(Enum_GPIO_Port_Typedef port) {
+	Enum_RCC_AHB1ENR_Typedef peripheral;	
 	
 	switch(port){
 		case GPIO_PortGPIOA:
@@ -68,12 +68,12 @@ void GPIO_Enable(GPIO_Port_Typedef port) {
 			break;
 	};
 	
-	RCC_ClockEnableConfig config;
+	Struct_RCC_ClockEnableConfig config;
 	config.AHB1Config = peripheral;
 	RCC_EnableClock(config);
 }
  
-void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig config) {
+void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig config) {
 	// Select GPIO pin mode
 	gpioX->MODER &= ~(0x03 << config.pin*2);
 	gpioX->MODER |= config.mode << (config.pin*2);

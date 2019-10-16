@@ -29,8 +29,6 @@
 #define GPIO_RED_LED 				GPIO_Pin14
 #define GPIO_BLUE_LED 			GPIO_Pin15
 
-#define GPIOx_PUPDR_ReservedValue 0x03
-
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
@@ -53,7 +51,7 @@ typedef enum {
 	GPIO_PortGPIOG,
 	GPIO_PortGPIOH,
 	GPIO_PortGPIOI
- } GPIO_Port_Typedef;
+} Enum_GPIO_Port_Typedef;
 
 /**
  * @enum This enumeration is a list of all GPIO port pins.
@@ -75,7 +73,7 @@ typedef enum {
 	GPIO_Pin13 = 0x0D,
 	GPIO_Pin14 = 0x0E,
 	GPIO_Pin15 = 0x0F
- } GPIO_Pin_Typedef;
+} Enum_GPIO_Pin_Typedef;
  
 /**
  * @enum This enumeration is a list of configured values for pin mode.
@@ -85,7 +83,7 @@ typedef enum {
 	GPIOx_MODER_Output = 0x01,
 	GPIOx_MODER_AlternateFunction = 0x02,
 	GPIOx_MODER_Analog = 0x03
-} GPIOx_MODER_Typedef;
+} Enum_GPIOx_MODER_Typedef;
 
 /**
  * @enum This enumeration is a list of configured values for pin output type.
@@ -93,7 +91,7 @@ typedef enum {
 typedef enum {
 	GPIOx_OTYPER_PushPull = 0x00,
 	GPIOx_OTYPER_OpenDrain = 0x01
-} GPIOx_OTYPER_Typedef;
+} Enum_GPIOx_OTYPER_Typedef;
 
 /**
  * @enum This enumeration is a list of configured values for pin output speed.
@@ -103,7 +101,7 @@ typedef enum {
 	GPIOx_OSPEEDR_Medium = 0x01,
 	GPIOx_OSPEEDR_High = 0x02,
 	GPIOx_OSPEEDR_VeryHigh = 0x03
-} GPIOx_OSPEEDR_Typedef;
+} Enum_GPIOx_OSPEEDR_Typedef;
 
 /**
  * @enum This enumeration is a list of configured values for pin pull-up/pull-down selection.
@@ -113,18 +111,18 @@ typedef enum {
 	GPIOx_PUPDR_PullUp = 0x01,
 	GPIOx_PUPDR_PullDown = 0x02
 	// Reserved value = 0x03
-} GPIOx_PUPDR_Typedef;
+} Enum_GPIOx_PUPDR_Typedef;
 
 /**
  * @struct This structure contains initialization configuration for a port pin.
  */
 typedef struct {
-	GPIO_Pin_Typedef pin;											/**< Pin number */
-	GPIOx_MODER_Typedef mode;							/**< Pin mode */
-	GPIOx_OTYPER_Typedef ouputType;				/**< Pin output type */
-	GPIOx_OSPEEDR_Typedef outputSpeed;		/**< Pin output speed */
-	GPIOx_PUPDR_Typedef pupd;							/**< Pin pull-up/pull-down selection */
-} GPIO_InitConfig;
+	Enum_GPIO_Pin_Typedef pin;											/**< Pin number */
+	Enum_GPIOx_MODER_Typedef mode;							/**< Pin mode */
+	Enum_GPIOx_OTYPER_Typedef ouputType;				/**< Pin output type */
+	Enum_GPIOx_OSPEEDR_Typedef outputSpeed;		/**< Pin output speed */
+	Enum_GPIOx_PUPDR_Typedef pupd;							/**< Pin pull-up/pull-down selection */
+} Struct_GPIO_InitConfig;
 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
@@ -143,7 +141,7 @@ extern "C"{
  *  @param gpioX The GPIO port.
  *  @return nothing.
  */
-void GPIO_Enable(GPIO_Port_Typedef port);
+void GPIO_Enable(Enum_GPIO_Port_Typedef port);
 
 /** @brief Initialize a GPIO port pin.
  *
@@ -151,7 +149,7 @@ void GPIO_Enable(GPIO_Port_Typedef port);
  *	@param initConfig The configuration for the GPIO port.
  *  @return nthing.
  */
-void GPIO_Init(GPIO_TypeDef* gpioX, GPIO_InitConfig initConfig);
+void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig initConfig);
 
 /** @brief Set a pin to HIGH with atomic operation.
  *

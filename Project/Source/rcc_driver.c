@@ -35,7 +35,7 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void RCC_EnableClock(RCC_ClockEnableConfig config) {
+void RCC_EnableClock(Struct_RCC_ClockEnableConfig config) {
 	RCC->AHB1ENR |= config.AHB1Config;
 }
 

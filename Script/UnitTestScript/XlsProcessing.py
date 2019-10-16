@@ -60,22 +60,23 @@ def find_output_position():
     return output_position
 
 def isStructure(type):
-    result = "False"
+    result = "True"
 
     # check if "type" exists in "basicTypes"
     try:
-        basicTypes.index(type)
+        #basicTypes.index(type)
+        type.index("Struct_")
     except ValueError:
-        result = "True"
+        result = "False"
     
     # check if "type" is a pointer
-    if result == "True":        
-        try:
-            type.index("*")
-        except ValueError:
-            result = "True"
-        else:
-            result = "False"
+    #if result == "True":        
+    #    try:
+    #        type.index("*")
+    #    except ValueError:
+    #        result = "True"
+    #    else:
+    #        result = "False"
             
     return result
     

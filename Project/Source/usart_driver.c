@@ -1,7 +1,7 @@
-/** @file main.c
- *  @brief Function implementation for main() function processing.
+/** @file usart_driver.c
+ *  @brief Function implementation for UART/USART driver.
  *
- *  This is the source file for main processing.
+ *  This is the source file for the definition of UART/USART driver.
  *
  *  @author 	Tran Nhat Duat (duattn)
  *	@version 	V1.0
@@ -10,7 +10,7 @@
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "main.h"
+#include "usart_driver.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -35,12 +35,6 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-int main(void) {
-	//demo();
-	
-	//infiniteLoop();
-	return runTest();
-}
 
 
 /** End of File ***************************************************************/

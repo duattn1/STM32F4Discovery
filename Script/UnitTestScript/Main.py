@@ -79,14 +79,39 @@ def compare(testcase):
     for var in testcase.global_vars:
         compare_one_register(var)
 
+def gen_section_0_header_comment_block():
+    cpp("/** @file ut_gpio_driver.c") 
+    cpp(" *  @brief Function implementation for unit test of GPIO driver.")
+    cpp(" *")
+    cpp(" *  This file is generated from scripts. This is the source file for ")
+    cpp(" *  the unit test definition of GPIO driver.")
+    cpp(" *")
+    cpp(" *  @author 	Tran Nhat Duat (duattn)")
+    cpp(" *  @version 	V1.0")
+    cpp(" */")
+    gen_break_line()
+
 def gen_section_1_include_file():
     gen_comment_block("1. Included Files") 
     cpp("#include \"ut_gpio_driver.h\"")
     gen_break_line()
+    
+def gen_section_2_object_macro():
+    gen_comment_block("2. Object-like Macros") 
+    gen_break_line()
+    
+def gen_section_3_function_macro():
+    gen_comment_block("3. Function-like Macros") 
+    gen_break_line()
+    
+def gen_section_4_typedef():
+    gen_comment_block("4. Typedefs: Enumerations, Structures, Pointers, Others") 
+    gen_break_line()
 
-def gen_section_2_variable():
-    gen_comment_block("2. Global, Static and Extern Variables")
+def gen_section_5_variable():
+    gen_comment_block("5. Global, Static and Extern Variables")
     noTestcase = len(testSuite.testcases)
+    gen_comment_line("List of all test cases")
     with cpp.block("void (*testcaseList[" + str(noTestcase) + \
     "])(void) = ", ";"):
         counter = 1
@@ -98,8 +123,8 @@ def gen_section_2_variable():
             counter += 1
     gen_break_line()
 
-def gen_section_3_function_definition():
-    gen_comment_block("3. Function Defintition")
+def gen_section_6_function_definition():
+    gen_comment_block("6. Function Definitions")
     # Generate blocks of testcases
     for testcase in testSuite.testcases:
         testcase_prototype = "void " + testcase.testcase_name + "(void)"
@@ -114,9 +139,13 @@ def gen_section_3_function_definition():
 ################################################################################
 # 4. Main processing: File generating
 ################################################################################
+gen_section_0_header_comment_block()
 gen_section_1_include_file()
-gen_section_2_variable()
-gen_section_3_function_definition()
+gen_section_2_object_macro()
+gen_section_3_function_macro()
+gen_section_4_typedef()
+gen_section_5_variable()
+gen_section_6_function_definition()
 
 # Close the generated file
 cpp.close()
