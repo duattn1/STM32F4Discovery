@@ -21,12 +21,10 @@
  * 2. Object-like Macros
  ******************************************************************************/
  
-/**
- * STM32F4 Discovery Kit LED pins on GPIOD.
- */
+/* STM32F4 Discovery Kit LED pins on GPIOD. */
 #define GPIO_YELLOW_LED 		GPIO_Pin12
 #define GPIO_ORANGE_LED 		GPIO_Pin13
-#define GPIO_RED_LED 				GPIO_Pin14
+#define GPIO_RED_LED 			GPIO_Pin14
 #define GPIO_BLUE_LED 			GPIO_Pin15
 
 /*******************************************************************************
@@ -74,7 +72,7 @@ typedef enum {
 	GPIO_Pin14 = 0x0E,
 	GPIO_Pin15 = 0x0F
 } Enum_GPIO_Pin_Typedef;
- 
+
 /**
  * @enum This enumeration is a list of configured values for pin mode.
  */
@@ -117,11 +115,11 @@ typedef enum {
  * @struct This structure contains initialization configuration for a port pin.
  */
 typedef struct {
-	Enum_GPIO_Pin_Typedef pin;											/**< Pin number */
-	Enum_GPIOx_MODER_Typedef mode;							/**< Pin mode */
-	Enum_GPIOx_OTYPER_Typedef ouputType;				/**< Pin output type */
-	Enum_GPIOx_OSPEEDR_Typedef outputSpeed;		/**< Pin output speed */
-	Enum_GPIOx_PUPDR_Typedef pupd;							/**< Pin pull-up/pull-down selection */
+	Enum_GPIO_Pin_Typedef pin;						/**< Pin number */
+	Enum_GPIOx_MODER_Typedef mode;					/**< Pin mode */
+	Enum_GPIOx_OTYPER_Typedef ouputType;			/**< Pin output type */
+	Enum_GPIOx_OSPEEDR_Typedef outputSpeed;			/**< Pin output speed */
+	Enum_GPIOx_PUPDR_Typedef pupd;					/**< Pin pull-up/pull-down selection */
 } Struct_GPIO_InitConfig;
 
 /*******************************************************************************

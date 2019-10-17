@@ -47,11 +47,11 @@ typedef enum {
 	// TODO: so on
  } Enum_RCC_AHB1ENR_Typedef;
 
- /**
+/**
  * @struct This structure contains configuration to enable peripheral clock.
  */
 typedef struct {
-	Enum_RCC_AHB1ENR_Typedef AHB1Config;
+	Enum_RCC_AHB1ENR_Typedef AHB1Config;	/**< Peripheral clock on AHB1 bus */
 	// Other buses
 } Struct_RCC_ClockEnableConfig;
  

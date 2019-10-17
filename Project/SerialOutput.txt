@@ -1,13 +1,29 @@
-UnitTest_Source\ut_main.c:27:testcaseList[i]:PASS
-UnitTest_Source\ut_main.c:16:testcaseList[i]:FAIL: Expected XXXXXXXXXXXXXXXXXXXXXXXXXXXX01XX Was XXXXXXXXXXXXXXXXXXXXXXXXXXXX00XX
-UnitTest_Source\ut_main.c:16:testcaseList[i]:FAIL: Expected XXXXXXXXXXXXXXXXXXXXXXXXXX10XXXX Was XXXXXXXXXXXXXXXXXXXXXXXXXX00XXXX
-UnitTest_Source\ut_main.c:16:testcaseList[i]:FAIL: Expected XXXXXXXXXXXXXXXXXXXXXXXX11XXXXXX Was XXXXXXXXXXXXXXXXXXXXXXXX00XXXXXX
-UnitTest_Source\ut_main.c:27:testcaseList[i]:PASS
-UnitTest_Source\ut_main.c:16:testcaseList[i]:FAIL: Expected XXXXXXXXXXXXXXXXXXXX01XXXXXXXXXX Was XXXXXXXXXXXXXXXXXXXX00XXXXXXXXXX
-UnitTest_Source\ut_main.c:16:testcaseList[i]:FAIL: Expected XXXXXXXXXXXXXXXXXX10XXXXXXXXXXXX Was XXXXXXXXXXXXXXXXXX00XXXXXXXXXXXX
-UnitTest_Source\ut_main.c:16:testcaseList[i]:FAIL: Expected XXXXXXXXXXXXXXXX11XXXXXXXXXXXXXX Was XXXXXXXXXXXXXXXX00XXXXXXXXXXXXXX
-UnitTest_Source\ut_main.c:27:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
+UnitTest_Source\ut_main.c:28:testcaseList[i]:PASS
 
 -----------------------
-9 Tests 6 Failures 0 Ignored 
-FAIL
+25 Tests 0 Failures 0 Ignored 
+OK

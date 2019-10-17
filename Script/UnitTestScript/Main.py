@@ -135,6 +135,9 @@ def gen_section_6_function_definition():
             compare(testcase)      
         gen_break_line()
     
+def gen_ending_header():
+    gen_comment_line("/** End of File ***************************************************************/")
+    gen_break_line()
     
 ################################################################################
 # 4. Main processing: File generating
@@ -146,6 +149,7 @@ gen_section_3_function_macro()
 gen_section_4_typedef()
 gen_section_5_variable()
 gen_section_6_function_definition()
+gen_ending_header()
 
 # Close the generated file
 cpp.close()

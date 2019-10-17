@@ -76,10 +76,11 @@ void GPIO_Enable(Enum_GPIO_Port_Typedef port) {
 void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig config) {
 	// Select GPIO pin mode
 	gpioX->MODER &= ~(0x03 << config.pin*2);
-	gpioX->MODER |= config.mode << (config.pin*2);
+	gpioX->MODER |= config.mode << config.pin*2;
 	
-	// Do config when GPIO pin mode is output
-	if(GPIOx_MODER_Output == config.mode) {
+	// Do config when GPIO pin mode is output OR alternate function
+	// Reference: Table 35. Port bit configuration table
+	if(GPIOx_MODER_Output == config.mode || GPIOx_MODER_AlternateFunction == config.mode) {
 		gpioX->OTYPER &= ~(0x1 << config.pin);
 		gpioX->OTYPER |= config.ouputType << config.pin;
 		

@@ -44,7 +44,7 @@ typedef enum
 }Test_t;
 
 /**
- * @struct This structure is TODO
+ * struct This structure is TODO
  */
 typedef struct
 {

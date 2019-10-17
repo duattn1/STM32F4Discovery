@@ -6,12 +6,13 @@
 /************************************************
  *  2. Global, Static and Extern Variables
  ***********************************************/
-extern void (*testcaseList[9])(void);
+extern void (*testcaseList[25])(void);
 
 /************************************************
  *  3. Function Defintition
  ***********************************************/
 void setUp(void) {  
+	GPIO_Enable(GPIO_PortGPIOD);
 }
 
 void tearDown(void) {
