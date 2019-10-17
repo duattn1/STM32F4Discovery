@@ -30,6 +30,16 @@ def init_param(testcase):
                 cpp(param.param_name + "." + statement + ";")
     gen_break_line()
 
+def call_funct_preconditon(testcase):
+    invoked_func_str = testcase.invoked_func_precondition
+    if "-" != invoked_func_str:
+        statements = invoked_func_str.split("\n")
+        
+        gen_comment_line("Test case precondition configuration")
+        for statement in statements:
+            cpp(statement)
+        gen_break_line()
+
 def call_test_method(testcase):
     # Create an array with null items ("None" is similar to null")
     param_list = [None] * len(testcase.params)
@@ -130,7 +140,8 @@ def gen_section_6_function_definition():
         testcase_prototype = "void " + testcase.testcase_name + "(void)"
         with cpp.block(testcase_prototype):
             init_global_var(testcase)    
-            init_param(testcase)    
+            init_param(testcase)
+            call_funct_preconditon(testcase)
             call_test_method(testcase)    
             compare(testcase)      
         gen_break_line()

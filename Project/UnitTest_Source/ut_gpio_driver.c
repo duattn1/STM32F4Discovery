@@ -29,7 +29,7 @@
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
 // List of all test cases
-void (*testcaseList[25])(void) = 
+void (*testcaseList[43])(void) = 
 {
 	Test_GPIO_Enable_TC1,
 	Test_GPIO_Enable_TC2,
@@ -55,7 +55,25 @@ void (*testcaseList[25])(void) =
 	Test_GPIO_Init_TC13,
 	Test_GPIO_Init_TC14,
 	Test_GPIO_Init_TC15,
-	Test_GPIO_Init_TC16
+	Test_GPIO_Init_TC16,
+	Test_GPIO_SetPin_TC1,
+	Test_GPIO_ResetPin_TC1,
+	Test_GPIO_ConfigPinAlternateFunction_TC1,
+	Test_GPIO_ConfigPinAlternateFunction_TC2,
+	Test_GPIO_ConfigPinAlternateFunction_TC3,
+	Test_GPIO_ConfigPinAlternateFunction_TC4,
+	Test_GPIO_ConfigPinAlternateFunction_TC5,
+	Test_GPIO_ConfigPinAlternateFunction_TC6,
+	Test_GPIO_ConfigPinAlternateFunction_TC7,
+	Test_GPIO_ConfigPinAlternateFunction_TC8,
+	Test_GPIO_ConfigPinAlternateFunction_TC9,
+	Test_GPIO_ConfigPinAlternateFunction_TC10,
+	Test_GPIO_ConfigPinAlternateFunction_TC11,
+	Test_GPIO_ConfigPinAlternateFunction_TC12,
+	Test_GPIO_ConfigPinAlternateFunction_TC13,
+	Test_GPIO_ConfigPinAlternateFunction_TC14,
+	Test_GPIO_ConfigPinAlternateFunction_TC15,
+	Test_GPIO_ConfigPinAlternateFunction_TC16
 };
 
 /*******************************************************************************
@@ -242,6 +260,9 @@ void Test_GPIO_Init_TC1(void)
 	config.mode = GPIOx_MODER_Input;
 	config.pupd = GPIOx_PUPDR_NoPull;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -287,6 +308,9 @@ void Test_GPIO_Init_TC2(void)
 	config.ouputType = GPIOx_OTYPER_OpenDrain;
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
 	config.pupd = GPIOx_PUPDR_PullUp;
+	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -334,6 +358,9 @@ void Test_GPIO_Init_TC3(void)
 	config.outputSpeed = GPIOx_OSPEEDR_High;
 	config.pupd = GPIOx_PUPDR_PullDown;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -378,6 +405,9 @@ void Test_GPIO_Init_TC4(void)
 	config.mode = GPIOx_MODER_Analog;
 	config.pupd = GPIOx_PUPDR_NoPull;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -421,6 +451,9 @@ void Test_GPIO_Init_TC5(void)
 	config.pin = GPIO_Pin4;
 	config.mode = GPIOx_MODER_Input;
 	config.pupd = GPIOx_PUPDR_NoPull;
+	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -468,6 +501,9 @@ void Test_GPIO_Init_TC6(void)
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
 	config.pupd = GPIOx_PUPDR_PullUp;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -514,6 +550,9 @@ void Test_GPIO_Init_TC7(void)
 	config.outputSpeed = GPIOx_OSPEEDR_High;
 	config.pupd = GPIOx_PUPDR_PullDown;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -558,6 +597,9 @@ void Test_GPIO_Init_TC8(void)
 	config.mode = GPIOx_MODER_Analog;
 	config.pupd = GPIOx_PUPDR_NoPull;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -601,6 +643,9 @@ void Test_GPIO_Init_TC9(void)
 	config.pin = GPIO_Pin8;
 	config.mode = GPIOx_MODER_Input;
 	config.pupd = GPIOx_PUPDR_NoPull;
+	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -648,6 +693,9 @@ void Test_GPIO_Init_TC10(void)
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
 	config.pupd = GPIOx_PUPDR_PullUp;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -694,6 +742,9 @@ void Test_GPIO_Init_TC11(void)
 	config.outputSpeed = GPIOx_OSPEEDR_High;
 	config.pupd = GPIOx_PUPDR_PullDown;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -738,6 +789,9 @@ void Test_GPIO_Init_TC12(void)
 	config.mode = GPIOx_MODER_Analog;
 	config.pupd = GPIOx_PUPDR_NoPull;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -781,6 +835,9 @@ void Test_GPIO_Init_TC13(void)
 	config.pin = GPIO_Pin12;
 	config.mode = GPIOx_MODER_Input;
 	config.pupd = GPIOx_PUPDR_NoPull;
+	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
 	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
@@ -828,6 +885,9 @@ void Test_GPIO_Init_TC14(void)
 	config.outputSpeed = GPIOx_OSPEEDR_Medium;
 	config.pupd = GPIOx_PUPDR_PullUp;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -874,6 +934,9 @@ void Test_GPIO_Init_TC15(void)
 	config.outputSpeed = GPIOx_OSPEEDR_High;
 	config.pupd = GPIOx_PUPDR_PullDown;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -918,6 +981,9 @@ void Test_GPIO_Init_TC16(void)
 	config.mode = GPIOx_MODER_Analog;
 	config.pupd = GPIOx_PUPDR_NoPull;
 	
+	// Test case precondition configuration
+	GPIO_Enable(GPIO_PortGPIOD);
+	
 	// Call the tested function
 	GPIO_Init(gpioX, config);
 	
@@ -941,6 +1007,690 @@ void Test_GPIO_Init_TC16(void)
 	global_var_4.expected = 0x00000000;
 	global_var_4.mask = 0xC0000000;
 	compareBits(global_var_4);
+}
+
+void Test_GPIO_SetPin_TC1(void)
+{
+	// Declare object to check value of gpioX->ODR
+	Uint32Data_Typedef global_var_1;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_Output;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_SetPin(gpioX, pin);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->ODR;
+	global_var_1.expected = 0x00004000;
+	global_var_1.mask = 0x00004000;
+	compareBits(global_var_1);
+}
+
+void Test_GPIO_ResetPin_TC1(void)
+{
+	// Declare object to check value of gpioX->ODR
+	Uint32Data_Typedef global_var_1;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_Output;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ResetPin(gpioX, pin);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->ODR;
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00004000;
+	compareBits(global_var_1);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC1(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction0;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x00000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC2(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction1;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x01000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC3(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction2;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x02000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC4(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction3;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x03000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC5(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction4;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x04000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC6(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction5;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x05000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC7(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction6;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x06000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC8(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction7;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x07000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC9(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction8;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x08000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC10(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction9;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x09000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC11(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction10;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x0A000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC12(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction11;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x0B000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC13(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction12;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x0C000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC14(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction13;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x0D000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC15(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction14;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x0E000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
+}
+
+void Test_GPIO_ConfigPinAlternateFunction_TC16(void)
+{
+	// Declare object to check value of gpioX->AFR[0]
+	Uint32Data_Typedef global_var_1;
+	// Declare object to check value of gpioX->AFR[1]
+	Uint32Data_Typedef global_var_2;
+	
+	// Init param_1
+	GPIO_TypeDef* gpioX = GPIOD;
+	// Init param_2
+	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
+	// Init param_3
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction15;
+	
+	// Test case precondition configuration
+	Struct_GPIO_InitConfig config;
+	config.pin = GPIO_Pin14;
+	config.mode = GPIOx_MODER_AlternateFunction;
+	config.ouputType = GPIOx_OTYPER_PushPull;
+	config.outputSpeed = GPIOx_OSPEEDR_Low;
+	config.pupd = GPIOx_PUPDR_PullUp;
+	GPIO_Enable(GPIO_PortGPIOD);
+	GPIO_Init(GPIOD, config);
+	
+	// Call the tested function
+	GPIO_ConfigPinAlternateFunction(gpioX, pin, altFunction);
+	
+	// Compare global_var_1 with expected value
+	global_var_1.actual = gpioX->AFR[0];
+	global_var_1.expected = 0x00000000;
+	global_var_1.mask = 0x00000000;
+	compareBits(global_var_1);
+	// Compare global_var_2 with expected value
+	global_var_2.actual = gpioX->AFR[1];
+	global_var_2.expected = 0x0F000000;
+	global_var_2.mask = 0x0F000000;
+	compareBits(global_var_2);
 }
 
 // /** End of File ***************************************************************/

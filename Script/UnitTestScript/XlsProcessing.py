@@ -16,6 +16,7 @@ class testSuiteCollection:
 class testcaseCollection:
     function_name = ""
     testcase_name = ""
+    invoked_func_precondition = ""
     params = []
     global_vars = []
     
@@ -75,10 +76,11 @@ def isStructure(type):
 ################################################################################
 loc = ("C:\\Users\\PC\\Documents\\GitHub\\STM32F4Discovery\\UT_TestSuite.xls") 
 # Open Workbook 
-testcaseSheetList = [1, 2]
-firstParamColumn = 2
+testcaseSheetList = [1, 2, 3, 4, 5]
+firstParamColumn = 3
 tcFirstLine = 5
 tcNameColumn = 0
+tcInvokedFuncColumn = 1
 ioTypeRow = 4
 ioNameRow = 3
 
@@ -98,10 +100,12 @@ for tcSheet in testcaseSheetList:
     
     for i in range(tcFirstLine, noRows):
         testcase_name = sheet.cell_value(i, tcNameColumn)
-        noParams = (output_position - 1) // 2 # division with result of integer number
+        testcase_invoked_func = sheet.cell_value(i, tcInvokedFuncColumn)
+        noParams = (output_position - firstParamColumn) // 2 # division with result of integer number
         noGlobalVars = (noCols - output_position) // 2 # division with result of integer number    
         
         testcase = testcaseCollection(func_name, testcase_name)
+        testcase.invoked_func_precondition = testcase_invoked_func
         testcase.params = [None]*noParams
         testcase.global_vars = [None]*noGlobalVars
         
@@ -128,7 +132,7 @@ for tcSheet in testcaseSheetList:
             mask = sheet.cell_value(i, j + 1)
             testcase.global_vars[index] = \
             globalVarCollection(gen_name, type, expected, actual_mem, mask)
-            
+                        
             index += 1
         
         testSuite.testcases.append(testcase)

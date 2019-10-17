@@ -95,12 +95,26 @@ void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig config) {
 	gpioX->PUPDR |= config.pupd << (config.pin*2);
 }
 
-void GPIO_SetPin(GPIO_TypeDef* gpioX, uint8_t pin){
+void GPIO_ConfigPinAlternateFunction(
+	GPIO_TypeDef* gpioX, 
+	Enum_GPIO_Pin_Typedef pin, 
+	Enum_GPIOx_AFR_Typedef altFunction)
+{
+	if(pin < GPIO_Pin8){
+		gpioX->AFR[0] &= ~(0x0F << 4*pin);
+		gpioX->AFR[0] |= altFunction << 4*pin;
+	} else {
+		gpioX->AFR[1] &= ~(0x0F << 4*(pin - GPIO_Pin8));
+		gpioX->AFR[1] |= altFunction << 4*(pin - GPIO_Pin8);
+	}
+}
+
+void GPIO_SetPin(GPIO_TypeDef* gpioX, Enum_GPIO_Pin_Typedef pin){
 	// BRn pins are located in 16 LSB bits of BSRR
 	gpioX->BSRR |= 0x01 << pin;
 }
 
-void GPIO_ResetPin(GPIO_TypeDef* gpioX, uint8_t pin){
+void GPIO_ResetPin(GPIO_TypeDef* gpioX, Enum_GPIO_Pin_Typedef pin){
 	// BSn pins are located in 16 MSB bits of BSRR
 	gpioX->BSRR |= 0x01 << (pin + 16);
 }

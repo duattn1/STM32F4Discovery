@@ -24,7 +24,7 @@
 /* STM32F4 Discovery Kit LED pins on GPIOD. */
 #define GPIO_YELLOW_LED 		GPIO_Pin12
 #define GPIO_ORANGE_LED 		GPIO_Pin13
-#define GPIO_RED_LED 			GPIO_Pin14
+#define GPIO_RED_LED 				GPIO_Pin14
 #define GPIO_BLUE_LED 			GPIO_Pin15
 
 /*******************************************************************************
@@ -112,6 +112,28 @@ typedef enum {
 } Enum_GPIOx_PUPDR_Typedef;
 
 /**
+ * @enum This enumeration is a list of configured values for pin pull-up/pull-down selection.
+ */
+typedef enum {
+	GPIOx_GPIOx_AFR_AlternateFunction0 = 0x00,
+	GPIOx_GPIOx_AFR_AlternateFunction1 = 0x01,
+	GPIOx_GPIOx_AFR_AlternateFunction2 = 0x02,
+	GPIOx_GPIOx_AFR_AlternateFunction3 = 0x03,
+	GPIOx_GPIOx_AFR_AlternateFunction4 = 0x04,
+	GPIOx_GPIOx_AFR_AlternateFunction5 = 0x05,
+	GPIOx_GPIOx_AFR_AlternateFunction6 = 0x06,
+	GPIOx_GPIOx_AFR_AlternateFunction7 = 0x07,
+	GPIOx_GPIOx_AFR_AlternateFunction8 = 0x08,
+	GPIOx_GPIOx_AFR_AlternateFunction9 = 0x09,
+	GPIOx_GPIOx_AFR_AlternateFunction10 = 0x0A,
+	GPIOx_GPIOx_AFR_AlternateFunction11 = 0x0B,
+	GPIOx_GPIOx_AFR_AlternateFunction12 = 0x0C,
+	GPIOx_GPIOx_AFR_AlternateFunction13 = 0x0D,
+	GPIOx_GPIOx_AFR_AlternateFunction14 = 0x0E,
+	GPIOx_GPIOx_AFR_AlternateFunction15 = 0x0F
+} Enum_GPIOx_AFR_Typedef;
+
+/**
  * @struct This structure contains initialization configuration for a port pin.
  */
 typedef struct {
@@ -145,7 +167,7 @@ void GPIO_Enable(Enum_GPIO_Port_Typedef port);
  *
  *  @param gpioX The GPIO port.
  *	@param initConfig The configuration for the GPIO port.
- *  @return nthing.
+ *  @return nothing.
  */
 void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig initConfig);
 
@@ -153,17 +175,29 @@ void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig initConfig);
  *
  *  @param gpioX The GPIO port.
  *	@param pin The pin that need to be set to HIGH.
- *  @return nthing.
+ *  @return nothing.
  */
-void GPIO_SetPin(GPIO_TypeDef* gpioX, uint8_t pin);
+void GPIO_SetPin(GPIO_TypeDef* gpioX, Enum_GPIO_Pin_Typedef pin);
+
+/** @brief Configure pin alternate function.
+ *
+ *  @param gpioX The GPIO port.
+ *	@param pin The pin that need to configure the alternate function.
+ *	@param altFunction Selected alternate function for the pin.
+ *  @return nothing.
+ */
+void GPIO_ConfigPinAlternateFunction(
+	GPIO_TypeDef* gpioX, 
+	Enum_GPIO_Pin_Typedef pin, 
+	Enum_GPIOx_AFR_Typedef altFunction);
 
  /** @brief Reset a pin to LOW with atomic operation.
  *
  *  @param gpioX The GPIO port.
  *	@param pin The pin that need to be reset to LOW.
- *  @return nthing.
+ *  @return nothing.
  */
-void GPIO_ResetPin(GPIO_TypeDef* gpioX, uint8_t pin);
+void GPIO_ResetPin(GPIO_TypeDef* gpioX, Enum_GPIO_Pin_Typedef pin);
 
 #ifdef __cplusplus
 } // extern "C"

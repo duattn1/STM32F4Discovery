@@ -54,4 +54,25 @@ void Test_GPIO_Init_TC14(void);
 void Test_GPIO_Init_TC15(void);
 void Test_GPIO_Init_TC16(void);
 
+void Test_GPIO_SetPin_TC1(void);
+
+void Test_GPIO_ResetPin_TC1(void);
+
+void Test_GPIO_ConfigPinAlternateFunction_TC1(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC2(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC3(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC4(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC5(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC6(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC7(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC8(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC9(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC10(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC11(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC12(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC13(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC14(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC15(void);
+void Test_GPIO_ConfigPinAlternateFunction_TC16(void);
+
 #endif
