@@ -115,22 +115,22 @@ typedef enum {
  * @enum This enumeration is a list of configured values for pin pull-up/pull-down selection.
  */
 typedef enum {
-	GPIOx_GPIOx_AFR_AlternateFunction0 = 0x00,
-	GPIOx_GPIOx_AFR_AlternateFunction1 = 0x01,
-	GPIOx_GPIOx_AFR_AlternateFunction2 = 0x02,
-	GPIOx_GPIOx_AFR_AlternateFunction3 = 0x03,
-	GPIOx_GPIOx_AFR_AlternateFunction4 = 0x04,
-	GPIOx_GPIOx_AFR_AlternateFunction5 = 0x05,
-	GPIOx_GPIOx_AFR_AlternateFunction6 = 0x06,
-	GPIOx_GPIOx_AFR_AlternateFunction7 = 0x07,
-	GPIOx_GPIOx_AFR_AlternateFunction8 = 0x08,
-	GPIOx_GPIOx_AFR_AlternateFunction9 = 0x09,
-	GPIOx_GPIOx_AFR_AlternateFunction10 = 0x0A,
-	GPIOx_GPIOx_AFR_AlternateFunction11 = 0x0B,
-	GPIOx_GPIOx_AFR_AlternateFunction12 = 0x0C,
-	GPIOx_GPIOx_AFR_AlternateFunction13 = 0x0D,
-	GPIOx_GPIOx_AFR_AlternateFunction14 = 0x0E,
-	GPIOx_GPIOx_AFR_AlternateFunction15 = 0x0F
+	GPIOx_GPIOx_AFR_AF0 = 0x00,
+	GPIOx_GPIOx_AFR_AF1 = 0x01,
+	GPIOx_GPIOx_AFR_AF2 = 0x02,
+	GPIOx_GPIOx_AFR_AF3 = 0x03,
+	GPIOx_GPIOx_AFR_AF4 = 0x04,
+	GPIOx_GPIOx_AFR_AF5 = 0x05,
+	GPIOx_GPIOx_AFR_AF6 = 0x06,
+	GPIOx_GPIOx_AFR_AF7 = 0x07,
+	GPIOx_GPIOx_AFR_AF8 = 0x08,
+	GPIOx_GPIOx_AFR_AF9 = 0x09,
+	GPIOx_GPIOx_AFR_AF10 = 0x0A,
+	GPIOx_GPIOx_AFR_AF11 = 0x0B,
+	GPIOx_GPIOx_AFR_AF12 = 0x0C,
+	GPIOx_GPIOx_AFR_AF13 = 0x0D,
+	GPIOx_GPIOx_AFR_AF14 = 0x0E,
+	GPIOx_GPIOx_AFR_AF15 = 0x0F
 } Enum_GPIOx_AFR_Typedef;
 
 /**

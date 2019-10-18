@@ -417,6 +417,11 @@
               <FileType>5</FileType>
               <FilePath>.\Include\usart_driver.h</FilePath>
             </File>
+            <File>
+              <FileName>misc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Include\misc.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -457,6 +462,11 @@
               <FileType>1</FileType>
               <FilePath>.\Source\usart_driver.c</FilePath>
             </File>
+            <File>
+              <FileName>misc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\misc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -477,6 +487,11 @@
               <FileType>5</FileType>
               <FilePath>.\UnitTest_Include\ut_base.h</FilePath>
             </File>
+            <File>
+              <FileName>ut_usart_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\UnitTest_Include\ut_usart_driver.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -496,6 +511,11 @@
               <FileName>ut_base.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\UnitTest_Source\ut_base.c</FilePath>
+            </File>
+            <File>
+              <FileName>ut_usart_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UnitTest_Source\ut_usart_driver.c</FilePath>
             </File>
           </Files>
         </Group>

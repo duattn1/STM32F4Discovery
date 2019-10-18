@@ -29,7 +29,7 @@
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
 // List of all test cases
-void (*testcaseList[43])(void) = 
+void (*testcaseListAAA[43])(void) = 
 {
 	Test_GPIO_Enable_TC1,
 	Test_GPIO_Enable_TC2,
@@ -1084,7 +1084,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC1(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction0;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF0;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1123,7 +1123,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC2(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction1;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF1;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1162,7 +1162,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC3(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction2;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF2;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1201,7 +1201,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC4(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction3;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF3;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1240,7 +1240,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC5(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction4;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF4;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1279,7 +1279,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC6(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction5;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF5;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1318,7 +1318,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC7(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction6;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF6;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1357,7 +1357,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC8(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction7;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF7;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1396,7 +1396,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC9(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction8;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF8;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1435,7 +1435,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC10(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction9;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF9;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1474,7 +1474,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC11(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction10;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF10;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1513,7 +1513,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC12(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction11;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF11;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1552,7 +1552,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC13(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction12;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF12;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1591,7 +1591,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC14(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction13;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF13;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1630,7 +1630,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC15(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction14;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF14;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;
@@ -1669,7 +1669,7 @@ void Test_GPIO_ConfigPinAlternateFunction_TC16(void)
 	// Init param_2
 	Enum_GPIO_Pin_Typedef pin = GPIO_Pin14;
 	// Init param_3
-	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AlternateFunction15;
+	Enum_GPIOx_AFR_Typedef altFunction = GPIOx_GPIOx_AFR_AF15;
 	
 	// Test case precondition configuration
 	Struct_GPIO_InitConfig config;

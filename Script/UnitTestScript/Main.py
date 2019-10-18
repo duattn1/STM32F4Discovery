@@ -105,43 +105,43 @@ def gen_externC_ending():
 
 def gen_section_0_header_comment_block(fileType):
     if "SourceFile" == fileType:
-        sourceFile("/** @file ut_gpio_driver.c") 
-        sourceFile(" *  @brief Function implementation for unit test of GPIO driver.")
+        sourceFile("/** @file ut_usart_driver.c") 
+        sourceFile(" *  @brief Function implementation for unit test of USART driver.")
         sourceFile(" *")
         sourceFile(" *  This file is generated from scripts. This is the source file for ")
-        sourceFile(" *  the unit test definition of GPIO driver.")
+        sourceFile(" *  the unit test definition of USART driver.")
         sourceFile(" *")
         sourceFile(" *  @author 	Tran Nhat Duat (duattn)")
         sourceFile(" *  @version 	V1.0")
         sourceFile(" */")
         gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
-        headerFile("/** @file ut_gpio_driver.h")
-        headerFile(" *  @brief Function prototypes for unit test of GPIO driver.")
+        headerFile("/** @file ut_usart_driver.h")
+        headerFile(" *  @brief Function prototypes for unit test of USART driver.")
         headerFile(" *")
         headerFile(" *  This file is generated from scripts. This is the header file for ")
-        headerFile(" *  the unit test definition of GPIO driver.")
+        headerFile(" *  the unit test definition of USART driver.")
         headerFile(" *")
         headerFile(" *  @author 	Tran Nhat Duat (duattn)")
         headerFile(" *  @version 	V1.0")
         headerFile(" */")
         gen_break_line(GenHeaderFile)
-        headerFile("#ifndef _UT_GPIO_DRIVER_H")
-        headerFile("#define _UT_GPIO_DRIVER_H")
+        headerFile("#ifndef _UT_USART_DRIVER_H")
+        headerFile("#define _UT_USART_DRIVER_H")
         gen_break_line(GenHeaderFile)
     
 def gen_section_1_include_file(fileType):
     
     if "SourceFile" == fileType:
         gen_comment_block(GenSourceFile, "1. Included Files") 
-        sourceFile("#include \"ut_gpio_driver.h\"")
+        sourceFile("#include \"ut_usart_driver.h\"")
         gen_break_line(GenSourceFile)
     if "HeaderFile" == fileType:
         gen_comment_block(GenHeaderFile, "1. Included Files") 
         headerFile("#include <stdlib.h>")
         headerFile("#include \"unity.h\"")
         headerFile("#include \"ut_base.h\"")
-        headerFile("#include \"gpio_driver.h\"")
+        headerFile("#include \"usart_driver.h\"")
         gen_break_line(GenHeaderFile)
     
 def gen_section_2_object_macro():
@@ -209,10 +209,10 @@ def gen_section_6_function_definition(fileType):
         
 def gen_ending_header():
     # Generate source contents
-    headerFile"/** End of File ***************************************************************/")
+    headerFile("/** End of File ***************************************************************/")
     gen_break_line(GenSourceFile)
     # Generate header contents
-    headerFile("#endif /* _UT_GPIO_DRIVER_H */")
+    headerFile("#endif /* _UT_USART_DRIVER_H */")
     gen_break_line(GenHeaderFile)
     headerFile("/** End of File ***************************************************************/")
     gen_break_line(GenHeaderFile)

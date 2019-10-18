@@ -1,44 +1,60 @@
-/** @file rcc_driver.c
- *  @brief Function implementation for RCC driver.
- *
- *  This is the source file for the definition of RCC driver.
- *
- *  @author 	Tran Nhat Duat (duattn)
+/** @file misc.h
+ *  @brief Function prototypes for miscellaneous utilities
+ * 
+ *  This is the header file for the definition of miscellaneous utilities
+ *  
+ * 	@author Tran Nhat Duat (duattn)
  *	@version 	V1.0
- */ 
+ */
  
+#ifndef _MISC_H
+#define _MISC_H
+
 /*******************************************************************************
  * 1. Included Files
  ******************************************************************************/
-#include "rcc_driver.h"
+#include <stdint.h>
+#include "stm32f407xx.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
-
+ 
 
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
-
+ 
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
  ******************************************************************************/
-
-
+/**
+ * @enum This enumeration is a list of basic settings.
+ */
+typedef enum {
+	DISABLE = 0x00,
+	ENABLE = 0x01
+} Enum_Command_Typedef;
+ 
 /*******************************************************************************
  * 5. Global, Static and Extern Variables
  ******************************************************************************/
 
 
 /*******************************************************************************
- * 6. Function Definitions
- ******************************************************************************/
-void RCC_EnableClock(Struct_RCC_ClockEnableConfig config) {
-	RCC->AHB1ENR |= config.AHB1Config;
-	RCC->APB1ENR |= config.APB1Config;
-	RCC->APB2ENR |= config.APB2Config;
-}
+ * 6. Function Prototypes
+ ******************************************************************************/ 
+#ifdef __cplusplus
+extern "C"{
+#endif
+	
+
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
+
+#endif /* _MISC_H */
 
 /** End of File ***************************************************************/

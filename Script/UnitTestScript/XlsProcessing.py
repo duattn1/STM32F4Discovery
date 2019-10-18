@@ -54,7 +54,8 @@ class paramCollection:
 # 3. Function definition
 ################################################################################
 def find_output_position(firstParamColumn):
-    output_position = firstParamColumn # assume that there is no INPUT data, and OUTPUT data begins at column 1
+    output_position = firstParamColumn # assume that there is no INPUT data, 
+    # and OUTPUT data begins at first param column.
     for i in range(sheet.ncols):
         if "Output" == sheet.cell_value(2, i):
             output_position = i
@@ -76,7 +77,7 @@ def isStructure(type):
 ################################################################################
 loc = ("C:\\Users\\PC\\Documents\\GitHub\\STM32F4Discovery\\UT_TestSuite.xls") 
 # Open Workbook 
-testcaseSheetList = [1, 2, 3, 4, 5]
+testcaseSheetList = [6, 8, 9, 10]
 firstParamColumn = 3
 tcFirstLine = 5
 tcNameColumn = 0
@@ -85,7 +86,7 @@ ioTypeRow = 4
 ioNameRow = 3
 
 
-testSuite = testSuiteCollection("ut_gpio_driver")
+testSuite = testSuiteCollection("ut_usart_driver")
 
 # Open XLS file
 wb = xlrd.open_workbook(loc) 
@@ -116,7 +117,7 @@ for tcSheet in testcaseSheetList:
             type = sheet.cell_value(ioTypeRow, j) # unchanged
             param_name = sheet.cell_value(ioNameRow, j) # unchanged
             init_value = sheet.cell_value(i, j)        
-            isStructType = isStructure(type)
+            isStructType = isStructure(type)            
             testcase.params[index] = \
             paramCollection(gen_name, type, param_name, init_value, isStructType)
             
