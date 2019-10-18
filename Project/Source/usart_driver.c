@@ -35,6 +35,35 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-
+void USART_Enable(Enum_USART_Typedef usartX){
+	Enum_RCC_APB1ENR_Typedef apb1 = RCC_APB1ENR_NothingEnable;
+	Enum_RCC_APB2ENR_Typedef apb2 = RCC_APB2ENR_NothingEnable;
+	
+	switch(usartX){
+		case USART_USART1:
+			apb2 = RCC_APB2ENR_USART1Enable;
+			break;
+		case USART_USART2:
+			apb1 = RCC_APB1ENR_USART2Enable;
+			break;
+		case USART_USART3:
+			apb1 = RCC_APB1ENR_USART3Enable;
+			break;
+		case USART_UART4:
+			apb1 = RCC_APB1ENR_UART4Enable;
+			break;
+		case USART_UART5:
+			apb1 = RCC_APB1ENR_UART5Enable;
+			break;
+		case USART_USART6:
+			apb2 = RCC_APB2ENR_USART6Enable;
+			break;
+	};
+	
+	Struct_RCC_ClockEnableConfig config;
+	config.APB1Config = apb1;
+	config.APB2Config = apb2;
+	RCC_EnableClock(config);
+}
 
 /** End of File ***************************************************************/

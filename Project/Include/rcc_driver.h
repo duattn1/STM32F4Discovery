@@ -32,9 +32,10 @@
 
 /**
  * @enum This enumeration is a list of configured values for peripheral
- *       clock enable in AHB bus.
+ *       clock enable in AHB1 bus.
  */
-typedef enum {	
+typedef enum {
+	RCC_AHB1ENR_NothingEnable = 0x00000000,
 	RCC_AHB1ENR_GPIOAEnable = 0x00000001,
 	RCC_AHB1ENR_GPIOBEnable = 0x00000002,
 	RCC_AHB1ENR_GPIOCEnable = 0x00000004,
@@ -46,12 +47,38 @@ typedef enum {
 	RCC_AHB1ENR_GPIOIEnable = 0x00000100,
 	// TODO: so on
  } Enum_RCC_AHB1ENR_Typedef;
+ 
+/**
+ * @enum This enumeration is a list of configured values for peripheral
+ *       clock enable in APB1 bus.
+ */
+typedef enum {
+	RCC_APB1ENR_NothingEnable = 0x00000000,
+	RCC_APB1ENR_USART2Enable = 0x00020000,
+	RCC_APB1ENR_USART3Enable = 0x00040000,
+	RCC_APB1ENR_UART4Enable = 0x00080000,
+	RCC_APB1ENR_UART5Enable = 0x00100000,
+	// TODO: so on
+ } Enum_RCC_APB1ENR_Typedef;
 
+ /**
+ * @enum This enumeration is a list of configured values for peripheral
+ *       clock enable in APB2 bus.
+ */
+typedef enum {
+	RCC_APB2ENR_NothingEnable = 0x00000000,
+	RCC_APB2ENR_USART1Enable = 0x00000010,
+	RCC_APB2ENR_USART6Enable = 0x00000020
+	// TODO: so on
+ } Enum_RCC_APB2ENR_Typedef;
+ 
 /**
  * @struct This structure contains configuration to enable peripheral clock.
  */
 typedef struct {
 	Enum_RCC_AHB1ENR_Typedef AHB1Config;	/**< Peripheral clock on AHB1 bus */
+	Enum_RCC_APB1ENR_Typedef APB1Config; 	/**< Peripheral clock on APB1 bus */
+	Enum_RCC_APB2ENR_Typedef APB2Config; 	/**< Peripheral clock on APB2 bus */
 	// Other buses
 } Struct_RCC_ClockEnableConfig;
  

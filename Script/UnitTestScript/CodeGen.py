@@ -44,7 +44,13 @@ class CodeFile:
 		self.out = open(filename,"w")
 		self.indent = "\t"
 		self.substack = []
-		
+
+################################################################################	
+	# new added function from origin library
+	def seekToPostion(self, cursorPosition):
+		self.out.seek(cursorPosition)
+################################################################################
+	
 	def close(self):
 		self.out.close()
 		self.out = None

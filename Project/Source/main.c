@@ -36,8 +36,7 @@
  * 6. Function Definitions
  ******************************************************************************/
 int main(void) {
-	//demo();
-	
+	//demo();	
 	//infiniteLoop();
 	return runTest();
 }

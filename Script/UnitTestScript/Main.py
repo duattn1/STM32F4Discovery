@@ -1,44 +1,46 @@
 ################################################################################
 # 1. Including files
 ################################################################################
-from CodeGenUtils import *
-from XlsProcessing import *
+from CodeGenUtils import *  # This module is for contents generating utilities
+from XlsProcessing import * # This module is for XLS file parsing
 
 ################################################################################
 # 2. Class definition
 ################################################################################
-
+# global variables
+GenSourceFile = "SourceFile"
+GenHeaderFile = "HeaderFile"
 ################################################################################
 # 3. Function definition
 ################################################################################
 def init_global_var(testcase):
     for var in testcase.global_vars:
-        gen_comment_line("Declare object to check value of " + var.actual_mem)
-        gen_var_declaration("Uint32Data_Typedef", var.gen_name)
-    gen_break_line()
+        gen_comment_line(GenSourceFile, "Declare object to check value of " + var.actual_mem)
+        gen_var_declaration(GenSourceFile, "Uint32Data_Typedef", var.gen_name)
+    gen_break_line(GenSourceFile)
 
 def init_param(testcase):
     for param in testcase.params:
-        gen_comment_line("Init " + param.gen_name)
+        gen_comment_line(GenSourceFile, "Init " + param.gen_name)
         if param.isStructType == "False":
-            gen_var_definition(param.type, param.param_name, param.init_value)
+            gen_var_definition(GenSourceFile, param.type, param.param_name, param.init_value)
         else:
-            gen_var_declaration(param.type, param.param_name)
+            gen_var_declaration(GenSourceFile, param.type, param.param_name)
             # Split the structure init contents into lines and store in an array
             struct_member_init = param.init_value.split("\n") 
             for statement in struct_member_init:
-                cpp(param.param_name + "." + statement + ";")
-    gen_break_line()
+                sourceFile(param.param_name + "." + statement + ";")
+    gen_break_line(GenSourceFile)
 
 def call_funct_preconditon(testcase):
     invoked_func_str = testcase.invoked_func_precondition
     if "-" != invoked_func_str:
         statements = invoked_func_str.split("\n")
         
-        gen_comment_line("Test case precondition configuration")
+        gen_comment_line(GenSourceFile, "Test case precondition configuration")
         for statement in statements:
-            cpp(statement)
-        gen_break_line()
+            sourceFile(statement)
+        gen_break_line(GenSourceFile)
 
 def call_test_method(testcase):
     # Create an array with null items ("None" is similar to null")
@@ -50,13 +52,13 @@ def call_test_method(testcase):
         param_list[i] = param.param_name
         i += 1
 
-    gen_comment_line("Call the tested function")
+    gen_comment_line(GenSourceFile, "Call the tested function")
     params_count = len(param_list)
     if params_count > 0:
-        gen_function_call_with_arg(testcase.function_name, param_list)
+        gen_function_call_with_arg(GenSourceFile,testcase.function_name, param_list)
     else:
-        gen_function_call_no_arg(testcase.function_name)
-    gen_break_line()
+        gen_function_call_no_arg(GenSourceFile, testcase.function_name)
+    gen_break_line(GenSourceFile)
 
 def compare_one_register(global_var):
     global_var_name = global_var.gen_name
@@ -64,7 +66,7 @@ def compare_one_register(global_var):
     # define temporary array to pass to gen_function_call_with_arg()
     temp_global_var = [global_var_name]
 
-    gen_comment_line("Compare " + global_var_name + " with expected value")
+    gen_comment_line(GenSourceFile, "Compare " + global_var_name + " with expected value")
     
     # Contents of global_var_n.actual
     actual_content = global_var_name + ".actual = "
@@ -79,88 +81,164 @@ def compare_one_register(global_var):
     mask_content += global_var.mask
     mask_content += ";"
     
-    cpp(actual_content)
-    cpp(expected_content)
-    cpp(mask_content)
+    sourceFile(actual_content)
+    sourceFile(expected_content)
+    sourceFile(mask_content)
     
-    gen_function_call_with_arg("compareBits", temp_global_var)  
+    gen_function_call_with_arg(GenSourceFile, "compareBits", temp_global_var)  
 
 def compare(testcase):
     for var in testcase.global_vars:
         compare_one_register(var)
 
-def gen_section_0_header_comment_block():
-    cpp("/** @file ut_gpio_driver.c") 
-    cpp(" *  @brief Function implementation for unit test of GPIO driver.")
-    cpp(" *")
-    cpp(" *  This file is generated from scripts. This is the source file for ")
-    cpp(" *  the unit test definition of GPIO driver.")
-    cpp(" *")
-    cpp(" *  @author 	Tran Nhat Duat (duattn)")
-    cpp(" *  @version 	V1.0")
-    cpp(" */")
-    gen_break_line()
+def gen_externC_beginning():
+    headerFile("#ifdef __cplusplus")
+    headerFile("extern \"C\"{")
+    headerFile("#endif")
+    gen_break_line(GenHeaderFile)
 
-def gen_section_1_include_file():
-    gen_comment_block("1. Included Files") 
-    cpp("#include \"ut_gpio_driver.h\"")
-    gen_break_line()
+def gen_externC_ending():
+    headerFile("#ifdef __cplusplus")
+    headerFile("} // extern \"C\"")
+    headerFile("#endif")
+    gen_break_line(GenHeaderFile)
+
+def gen_section_0_header_comment_block(fileType):
+    if "SourceFile" == fileType:
+        sourceFile("/** @file ut_gpio_driver.c") 
+        sourceFile(" *  @brief Function implementation for unit test of GPIO driver.")
+        sourceFile(" *")
+        sourceFile(" *  This file is generated from scripts. This is the source file for ")
+        sourceFile(" *  the unit test definition of GPIO driver.")
+        sourceFile(" *")
+        sourceFile(" *  @author 	Tran Nhat Duat (duattn)")
+        sourceFile(" *  @version 	V1.0")
+        sourceFile(" */")
+        gen_break_line(GenSourceFile)
+    if "HeaderFile" == fileType:
+        headerFile("/** @file ut_gpio_driver.h")
+        headerFile(" *  @brief Function prototypes for unit test of GPIO driver.")
+        headerFile(" *")
+        headerFile(" *  This file is generated from scripts. This is the header file for ")
+        headerFile(" *  the unit test definition of GPIO driver.")
+        headerFile(" *")
+        headerFile(" *  @author 	Tran Nhat Duat (duattn)")
+        headerFile(" *  @version 	V1.0")
+        headerFile(" */")
+        gen_break_line(GenHeaderFile)
+        headerFile("#ifndef _UT_GPIO_DRIVER_H")
+        headerFile("#define _UT_GPIO_DRIVER_H")
+        gen_break_line(GenHeaderFile)
+    
+def gen_section_1_include_file(fileType):
+    
+    if "SourceFile" == fileType:
+        gen_comment_block(GenSourceFile, "1. Included Files") 
+        sourceFile("#include \"ut_gpio_driver.h\"")
+        gen_break_line(GenSourceFile)
+    if "HeaderFile" == fileType:
+        gen_comment_block(GenHeaderFile, "1. Included Files") 
+        headerFile("#include <stdlib.h>")
+        headerFile("#include \"unity.h\"")
+        headerFile("#include \"ut_base.h\"")
+        headerFile("#include \"gpio_driver.h\"")
+        gen_break_line(GenHeaderFile)
     
 def gen_section_2_object_macro():
-    gen_comment_block("2. Object-like Macros") 
-    gen_break_line()
+    # Generate sourcr contents
+    gen_comment_block(GenSourceFile, "2. Object-like Macros") 
+    gen_break_line(GenSourceFile)
+    # Generate header contents
+    gen_comment_block(GenHeaderFile, "2. Object-like Macros") 
+    gen_break_line(GenHeaderFile)
     
 def gen_section_3_function_macro():
-    gen_comment_block("3. Function-like Macros") 
-    gen_break_line()
+    # Generate source contents
+    gen_comment_block(GenSourceFile, "3. Function-like Macros") 
+    gen_break_line(GenSourceFile)
+    # Generate header contents
+    gen_comment_block(GenHeaderFile, "3. Function-like Macros") 
+    gen_break_line(GenHeaderFile)
     
 def gen_section_4_typedef():
-    gen_comment_block("4. Typedefs: Enumerations, Structures, Pointers, Others") 
-    gen_break_line()
+    # Generate source contents
+    gen_comment_block(GenSourceFile, "4. Typedefs: Enumerations, Structures, Pointers, Others") 
+    gen_break_line(GenSourceFile)
+    # Generate header contents
+    gen_comment_block(GenHeaderFile, "4. Typedefs: Enumerations, Structures, Pointers, Others") 
+    gen_break_line(GenHeaderFile)
 
-def gen_section_5_variable():
-    gen_comment_block("5. Global, Static and Extern Variables")
-    noTestcase = len(testSuite.testcases)
-    gen_comment_line("List of all test cases")
-    with cpp.block("void (*testcaseList[" + str(noTestcase) + \
-    "])(void) = ", ";"):
-        counter = 1
+def gen_section_5_variable(fileType):
+    if "SourceFile" == fileType:
+        gen_comment_block(GenSourceFile, "5. Global, Static and Extern Variables")
+        noTestcase = len(testSuite.testcases)
+        gen_comment_line(GenSourceFile, "List of all test cases")
+        with sourceFile.block("void (*testcaseList[" + str(noTestcase) + \
+        "])(void) = ", ";"):
+            counter = 1
+            for testcase in testSuite.testcases:
+                if counter < noTestcase:
+                    sourceFile(testcase.testcase_name + ",")           
+                else:
+                    sourceFile(testcase.testcase_name)
+                counter += 1
+        gen_break_line(GenSourceFile)
+    if "HeaderFile" == fileType:
+        gen_comment_block(GenHeaderFile, "5. Global, Static and Extern Variables")
+        
+def gen_section_6_function_definition(fileType):
+    if "SourceFile" == fileType:
+        gen_comment_block(GenSourceFile, "6. Function Definitions")
+        # Generate blocks of testcases
         for testcase in testSuite.testcases:
-            if counter < noTestcase:
-                cpp(testcase.testcase_name + ",")           
-            else:
-                cpp(testcase.testcase_name)
-            counter += 1
-    gen_break_line()
-
-def gen_section_6_function_definition():
-    gen_comment_block("6. Function Definitions")
-    # Generate blocks of testcases
-    for testcase in testSuite.testcases:
-        testcase_prototype = "void " + testcase.testcase_name + "(void)"
-        with cpp.block(testcase_prototype):
-            init_global_var(testcase)    
-            init_param(testcase)
-            call_funct_preconditon(testcase)
-            call_test_method(testcase)    
-            compare(testcase)      
-        gen_break_line()
-    
+            testcase_prototype = "void " + testcase.testcase_name + "(void)"
+            with sourceFile.block(testcase_prototype):
+                init_global_var(testcase)    
+                init_param(testcase)
+                call_funct_preconditon(testcase)
+                call_test_method(testcase)    
+                compare(testcase)      
+            gen_break_line(GenSourceFile)
+    if "HeaderFile" == fileType:
+        gen_comment_block(GenSourceFile, "6. Function Prototypes")
+        gen_externC_beginning()
+        for testcase in testSuite.testcases:
+            headerFile("void " + testcase.testcase_name + "(void);")
+        gen_break_line(GenHeaderFile)
+        gen_externC_ending()
+        
 def gen_ending_header():
-    gen_comment_line("/** End of File ***************************************************************/")
-    gen_break_line()
+    # Generate source contents
+    headerFile"/** End of File ***************************************************************/")
+    gen_break_line(GenSourceFile)
+    # Generate header contents
+    headerFile("#endif /* _UT_GPIO_DRIVER_H */")
+    gen_break_line(GenHeaderFile)
+    headerFile("/** End of File ***************************************************************/")
+    gen_break_line(GenHeaderFile)
     
 ################################################################################
 # 4. Main processing: File generating
 ################################################################################
-gen_section_0_header_comment_block()
-gen_section_1_include_file()
+gen_section_0_header_comment_block(GenHeaderFile)
+gen_section_0_header_comment_block(GenSourceFile)
+
+gen_section_1_include_file(GenHeaderFile)
+gen_section_1_include_file(GenSourceFile)
+
 gen_section_2_object_macro()
 gen_section_3_function_macro()
 gen_section_4_typedef()
-gen_section_5_variable()
-gen_section_6_function_definition()
+
+gen_section_5_variable(GenHeaderFile)
+gen_section_5_variable(GenSourceFile)
+
+gen_section_6_function_definition(GenHeaderFile)
+gen_section_6_function_definition(GenSourceFile)
+
 gen_ending_header()
 
+
+
 # Close the generated file
-cpp.close()
+sourceFile.close()
