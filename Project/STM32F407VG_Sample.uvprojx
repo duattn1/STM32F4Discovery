@@ -336,7 +336,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>GPIO_SAMPLE, UNIT_TEST_RUNNING</Define>
+              <Define>GPIO_SAMPLE, UNIT_TEST_RUNNING, USE_FULL_ASSERT</Define>
               <Undefine></Undefine>
               <IncludePath>.\Include;.\UnityLibrary;.\UnitTest_Include</IncludePath>
             </VariousControls>

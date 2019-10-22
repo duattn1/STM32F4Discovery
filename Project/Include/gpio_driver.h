@@ -16,6 +16,7 @@
 #include <stdint.h>
 #include "stm32f407xx.h"
 #include "rcc_driver.h"
+#include "misc.h"
 
 /*******************************************************************************
  * 2. Object-like Macros
@@ -30,7 +31,93 @@
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
- 
+/**
+ * This function-like macro to check if a GPIO port base address is correct.
+ */ 
+#define IS_GPIO_PORT_BASE_ADDRESS(PERI)	((GPIOA == PERI) || \
+																				(GPIOB == PERI) || \
+																				(GPIOC == PERI) || \
+																				(GPIOD == PERI) || \
+																				(GPIOE == PERI) || \
+																				(GPIOF == PERI) || \
+																				(GPIOG == PERI) || \
+																				(GPIOH == PERI) || \
+																				(GPIOI == PERI))
+
+/**
+ * This function-like macro to check if a GPIO port is correct.
+ */ 
+#define IS_GPIO_PORT(PORT)	((GPIO_PortGPIOA == PORT) || \
+														(GPIO_PortGPIOB == PORT) || \
+														(GPIO_PortGPIOC == PORT) || \
+														(GPIO_PortGPIOD == PORT) || \
+														(GPIO_PortGPIOE == PORT) || \
+														(GPIO_PortGPIOF == PORT) || \
+														(GPIO_PortGPIOG == PORT) || \
+														(GPIO_PortGPIOH == PORT) || \
+														(GPIO_PortGPIOI == PORT))
+
+/**
+ * This function-like macro to check if a GPIO pin number is correct.
+ */
+#define IS_GPIO_PIN(PIN)		((GPIO_Pin0 == PIN) || (GPIO_Pin1 == PIN) || \
+														(GPIO_Pin2 == PIN) || (GPIO_Pin3 == PIN) || \
+														(GPIO_Pin4 == PIN) || (GPIO_Pin5 == PIN) || \
+														(GPIO_Pin6 == PIN) || (GPIO_Pin7 == PIN) || \
+														(GPIO_Pin8 == PIN) || (GPIO_Pin9 == PIN) || \
+														(GPIO_Pin10 == PIN) || (GPIO_Pin11 == PIN) || \
+														(GPIO_Pin12 == PIN) || (GPIO_Pin13 == PIN) || \
+														(GPIO_Pin14 == PIN) || (GPIO_Pin15 == PIN))
+
+/**
+ * This function-like macro to check if a GPIO pin mode is correct.
+ */
+#define IS_GPIO_MODE(MODE)	((GPIOx_MODER_Input == MODE) || \
+														(GPIOx_MODER_Output == MODE) || \
+														(GPIOx_MODER_AlternateFunction == MODE) || \
+														(GPIOx_MODER_Analog == MODE))
+
+/**
+ * This function-like macro to check if a GPIO pin output type is correct.
+ */
+#define IS_GPIO_OUTPUT_TYPE(OTYPE)	((GPIOx_OTYPER_PushPull == OTYPE) || \
+														(GPIOx_OTYPER_OpenDrain == OTYPE))
+														
+/**
+ * This function-like macro to check if a GPIO pin output speed is correct.
+ */
+#define IS_GPIO_OUTPUT_SPEED(OSPEED)	((GPIOx_OSPEEDR_Low == OSPEED) || \
+																			(GPIOx_OSPEEDR_Medium == OSPEED) || \
+																			(GPIOx_OSPEEDR_High == OSPEED) || \
+																			(GPIOx_OSPEEDR_VeryHigh == OSPEED))
+														
+/**
+ * This function-like macro to check if a GPIO pin pull-up/pull-down resistor selection is correct.
+ */
+#define IS_GPIO_PULLUP_PULLDOWN(PUPD)	((GPIOx_PUPDR_NoPull == PUPD) || \
+																			(GPIOx_PUPDR_PullUp == PUPD) || \
+																			(GPIOx_PUPDR_PullDown == PUPD))
+																			
+/**
+ * This function-like macro to check if a GPIO pin alternate function selection is correct.
+ */
+#define IS_GPIO_PIN_ALTERNATE_FUNCTION(AF)	((GPIOx_GPIOx_AFR_AF0 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF1 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF2 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF3 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF4 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF5 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF6 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF7 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF8 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF9 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF10 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF11 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF12 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF13 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF14 == AF) || \
+																						(GPIOx_GPIOx_AFR_AF15 == AF))
+																						
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
@@ -173,6 +260,7 @@ void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig initConfig);
 
 /** @brief Set a pin to HIGH with atomic operation.
  *
+ *	@pre Clock source of GPIO port (gpioX) is enabled.
  *  @param gpioX The GPIO port.
  *	@param pin The pin that need to be set to HIGH.
  *  @return nothing.
@@ -181,6 +269,7 @@ void GPIO_SetPin(GPIO_TypeDef* gpioX, Enum_GPIO_Pin_Typedef pin);
 
 /** @brief Configure pin alternate function.
  *
+ *	@pre Clock source of GPIO port (gpioX) is enabled.
  *  @param gpioX The GPIO port.
  *	@param pin The pin that need to configure the alternate function.
  *	@param altFunction Selected alternate function for the pin.

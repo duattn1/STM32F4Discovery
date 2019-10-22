@@ -35,9 +35,10 @@
 /*******************************************************************************
  * 6. Function Definitions
  ******************************************************************************/
-void GPIO_Enable(Enum_GPIO_Port_Typedef port) {
-	Enum_RCC_AHB1ENR_Typedef peripheral;	
+void GPIO_Enable(Enum_GPIO_Port_Typedef port) {	
+	assert(IS_GPIO_PORT(port));
 	
+	Enum_RCC_AHB1ENR_Typedef peripheral;	
 	switch(port){
 		case GPIO_PortGPIOA:
 			peripheral = RCC_AHB1ENR_GPIOAEnable;
@@ -74,6 +75,16 @@ void GPIO_Enable(Enum_GPIO_Port_Typedef port) {
 }
  
 void GPIO_Init(GPIO_TypeDef* gpioX, Struct_GPIO_InitConfig config) {
+	// Assert parameters
+	assert(IS_GPIO_PORT_BASE_ADDRESS(gpioX));
+	assert(IS_GPIO_PIN(config.pin));
+	assert(IS_GPIO_MODE(config.mode));
+	assert(IS_GPIO_OUTPUT_TYPE(config.ouputType));
+	assert(IS_GPIO_OUTPUT_SPEED(config.outputSpeed));
+	assert(IS_GPIO_PULLUP_PULLDOWN(config.pupd));
+	// Assert preconditions
+	assert(IS_GPIO_PERIPHERAL_CLOCK_ENALBED(gpioX));
+	
 	// Select GPIO pin mode
 	gpioX->MODER &= ~(0x03 << config.pin*2);
 	gpioX->MODER |= config.mode << config.pin*2;
@@ -100,6 +111,13 @@ void GPIO_ConfigPinAlternateFunction(
 	Enum_GPIO_Pin_Typedef pin, 
 	Enum_GPIOx_AFR_Typedef altFunction)
 {
+	// Assert parameters
+	assert(IS_GPIO_PORT_BASE_ADDRESS(gpioX));
+	assert(IS_GPIO_PIN(pin));
+	assert(IS_GPIO_PIN_ALTERNATE_FUNCTION(altFunction));
+	// Assert preconditions
+	assert(IS_GPIO_PERIPHERAL_CLOCK_ENALBED(gpioX));
+	
 	if(pin < GPIO_Pin8){
 		gpioX->AFR[0] &= ~(0x0F << 4*pin);
 		gpioX->AFR[0] |= altFunction << 4*pin;

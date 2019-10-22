@@ -19,12 +19,24 @@
 /*******************************************************************************
  * 2. Object-like Macros
  ******************************************************************************/
- 
+#define AHB1_CLOCK_REGISTER		RCC->AHB1ENR 
 
 /*******************************************************************************
  * 3. Function-like Macros
  ******************************************************************************/
- 
+ /**
+ * This function-like macro to check if a peripheral clock source is enables.
+ */
+#define IS_GPIO_PERIPHERAL_CLOCK_ENALBED(PERI)	\
+	(((GPIOA == PERI) && (RCC_AHB1ENR_GPIOAEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOAEnable))) || \
+	((GPIOB == PERI) && (RCC_AHB1ENR_GPIOBEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOBEnable))) || \
+	((GPIOC == PERI) && (RCC_AHB1ENR_GPIOCEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOCEnable))) || \
+	((GPIOD == PERI) && (RCC_AHB1ENR_GPIODEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIODEnable))) || \
+	((GPIOE == PERI) && (RCC_AHB1ENR_GPIOEEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOEEnable))) || \
+	((GPIOF == PERI) && (RCC_AHB1ENR_GPIOFEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOFEnable))) || \
+	((GPIOG == PERI) && (RCC_AHB1ENR_GPIOGEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOGEnable))) || \
+	((GPIOH == PERI) && (RCC_AHB1ENR_GPIOHEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOHEnable))) || \
+	((GPIOI == PERI) && (RCC_AHB1ENR_GPIOIEnable == (AHB1_CLOCK_REGISTER & RCC_AHB1ENR_GPIOIEnable))))
 
 /*******************************************************************************
  * 4. Typedefs: Enumerations, Structures, Pointers, Others
